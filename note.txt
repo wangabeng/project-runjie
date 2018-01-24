@@ -11,3 +11,6 @@ https://d2c.io/
 http://www.rjqygl.com/content/?337.html
 
 # 用stylus的时候  如果用本地css文件 会警告并不会生效 最好都用styl文件格式 而不是css文件和styl文件混用
+
+# 图标字体链接地址
+http://fontawesome.dashgame.com/#getstart

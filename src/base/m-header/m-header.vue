@@ -1,5 +1,5 @@
 <template>
-  <div class='header base-wrapper'>
+  <div class='header'>
     <div>
       <img class='logoare' src='./logo.png'/>
     </div>
@@ -20,6 +20,7 @@
     background: $color-background-header
     height: 102px
     position: relative
+    width: 100%
 
     .logoare
       height: 90px
