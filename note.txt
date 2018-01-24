@@ -1,11 +1,13 @@
-关于json的html数据 
+# 关于json的html数据 
 参照新华网
 
 http://www.xinhuanet.com/politics/2018-01/21/c_1122291303.htm
 
-html样式参考
+# html样式参考
 https://www.azul.com/
 https://d2c.io/
 
-周芳网站
+# 周芳网站
 http://www.rjqygl.com/content/?337.html
+
+# 用stylus的时候  如果用本地css文件 会警告并不会生效 最好都用styl文件格式 而不是css文件和styl文件混用
