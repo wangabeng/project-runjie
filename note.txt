@@ -14,3 +14,8 @@ http://www.rjqygl.com/content/?337.html
 
 # 图标字体链接地址
 http://fontawesome.dashgame.com/#getstart
+
+# flex布局图文并茂版
+  http://blog.csdn.net/magneto7/article/details/70854472
+  flex子容器如果嵌套子元素 可以把子元素设置为display: flex
+  例如ul（容器）元素嵌套li（li是ul的子元素），li又包含了a元素，把li设置为 display: flex

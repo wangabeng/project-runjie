@@ -23,11 +23,12 @@
     width: 100%
 
     .logoare
-      height: 90px
+      height: 60px
       position: absolute
-      left:5px
-      top:5px
+      left:4%
+      top:15px
 
+    /* 公司名称h1 用于SEO优化 不显示 */  
     .corpTitle
       font-size: 20px
       position: absolute
@@ -35,11 +36,12 @@
       top: 56px
       font-size: 16px
       color: $color-text-blue
+      margin-left: -500px
     .icon-bars
       color: $color-text-blue
       position: absolute
       right: 30px
-      top: 24px
+      top: 34px
       padding: 5px 15px
       border: 1px solid $color-text-blue
       border-radius: 5px
