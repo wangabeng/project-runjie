@@ -1,5 +1,5 @@
 <template>
-  <div class='nav-bar-wrapper'>
+  <div class='nav-bar-wrapper' ref='navBarWrapper'>
     <!--
       响应布局 当屏幕宽度小于768px时 nav改为竖直排列
     -->
@@ -17,6 +17,11 @@
 
 <script>
   export default {
+    created () {
+      this.$root.eventBus.$on('showNav', (msg) => {
+        msg === true? this.$refs.navBarWrapper.style.display = 'block': this.$refs.navBarWrapper.style.display = 'none';
+      });
+    }
   }
 </script>
 

@@ -16,12 +16,23 @@
         <li><a href='#'>招聘</a></li>
       </ul>
     </div>
-    <i class="fa fa-bars fa-2x icon-bars"></i>
+    <i class="fa fa-bars fa-2x icon-bars" @click.stop='showNav'></i>
   </div>
 </template>
 
 <script>
   export default {
+    data () {
+      return {
+        ifShow: false
+      };
+    },
+    methods: {
+      showNav () {
+        this.ifShow = !this.ifShow
+        this.$root.eventBus.$emit('showNav', this.ifShow);
+      }
+    }
   }
 </script>
 

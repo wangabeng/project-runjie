@@ -9,6 +9,9 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  data: {
+    eventBus: new Vue()
+  },
   el: '#app',
   router,
   components: { App },
