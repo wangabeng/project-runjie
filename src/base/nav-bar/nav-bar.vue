@@ -25,8 +25,12 @@
 
   .nav-bar-wrapper
     width: 100%
+    position: fixed
     background-color: $color-background-blue
-
+    display: none
+    top: 102px
+    left: 0
+    z-index: 100
     .nav-content
       display: flex
       flex-direction: column
@@ -35,8 +39,8 @@
         flex: 1
         display: flex
         justify-content: left
-        line-height: 40px
-        height: 40px
+        line-height: 58px
+        height: 58px
 
         a
           color: $color-text-white

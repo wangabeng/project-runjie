@@ -1,9 +1,21 @@
 <template>
-  <div class='header'>
+  <div class='header clearfix'>
     <div>
       <img class='logoare' src='./logo.png'/>
     </div>
     <h1 class='corpTitle'>襄阳润捷企业管理</h1>
+
+    <div class='nav-bar'>
+      <ul class='nav-content clearfix'>
+        <li><a href='#'>首页</a></li>
+        <li><a href='#'>关于润捷</a></li>
+        <li><a href='#'>服务项目</a></li>
+        <li><a href='#'>新闻</a></li>
+        <li><a href='#'>成功案例</a></li>
+        <li><a href='#'>证书样本</a></li>
+        <li><a href='#'>招聘</a></li>
+      </ul>
+    </div>
     <i class="fa fa-bars fa-2x icon-bars"></i>
   </div>
 </template>
@@ -19,16 +31,19 @@
   .header
     background: $color-background-header
     height: 102px
-    position: relative
+    position: fixed
+    left: 0
+    top: 0
     width: 100%
+    z-index: 100
 
     .logoare
-      height: 60px
-      position: absolute
-      left:4%
-      top:15px
+      height: 70px
+      float:left
+      margin-left:4%
+      margin-top:15px
 
-    /* 公司名称h1 用于SEO优化 不显示 */  
+    /* corpTitle公司名称h1 用于SEO优化 不显示 */  
     .corpTitle
       font-size: 20px
       position: absolute
@@ -36,12 +51,32 @@
       top: 56px
       font-size: 16px
       color: $color-text-blue
-      margin-left: -500px
+      margin-left: -100%
+    
+    .nav-bar
+      width: 50%
+      float: left
+      margin-top: 60px
+      margin-left: 3%
+      li
+        float: left
+        >a
+          padding: 0 12px
+          font-size: $font-size-medium
+          font-weight: bold
+          color: $color-text-basic
+        >a:hover
+          color: $color-text-blue
+
+    @media (max-width: 800px)
+      .nav-bar
+        display: none
+
     .icon-bars
       color: $color-text-blue
-      position: absolute
-      right: 30px
-      top: 34px
+      float:right
+      margin-right: 2%
+      margin-top: 30px
       padding: 5px 15px
       border: 1px solid $color-text-blue
       border-radius: 5px
