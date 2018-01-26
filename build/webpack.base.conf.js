@@ -8,7 +8,8 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-
+// 目的为引入jQuery
+var webpack = require("webpack")
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -30,7 +31,9 @@ module.exports = {
       'src': resolve('src'),
       'common': resolve('src/common'),
       'components': resolve('src/components'),
-      'base': resolve('src/base')
+      'base': resolve('src/base'),
+      // 引入jQuery
+      'jquery': 'jquery' 
     }
   },
   module: {
@@ -82,5 +85,13 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  // 引入jQuery
+  plugins: [
+   new webpack.optimize.CommonsChunkPlugin('common.js'),
+   new webpack.ProvidePlugin({
+       jQuery: "jquery",
+       $: "jquery"
+   })
+  ]
 }

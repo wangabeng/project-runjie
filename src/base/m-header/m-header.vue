@@ -7,13 +7,13 @@
 
     <div class='nav-bar'>
       <ul class='nav-content clearfix'>
-        <li><a href='#'>首页</a></li>
-        <li><a href='#'>关于润捷</a></li>
-        <li><a href='#'>服务项目</a></li>
-        <li><a href='#'>新闻</a></li>
-        <li><a href='#'>成功案例</a></li>
-        <li><a href='#'>证书样本</a></li>
-        <li><a href='#'>招聘</a></li>
+        <li><router-link tag='a' to='/'>首页</router-link></li>
+        <li><router-link tag='a' to='/aboutus'>关于润捷</router-link></li>
+        <li><router-link tag='a' to='/service'>服务项目</router-link></li>
+        <li><router-link tag='a' to='/news'>新闻</router-link></li>
+        <li><router-link tag='a' to='/case'>成功案例</router-link></li>
+        <li><router-link tag='a' to='/sample'>证书样本</router-link></li>
+        <li><router-link tag='a' to='/jobs'>招聘</router-link></li>
       </ul>
     </div>
     <i class="fa fa-bars fa-2x icon-bars" @click.stop='showNav'></i>
@@ -29,8 +29,9 @@
     },
     methods: {
       showNav () {
-        this.ifShow = !this.ifShow
+        this.ifShow = !this.ifShow;
         this.$root.eventBus.$emit('showNav', this.ifShow);
+        console.log($);
       }
     }
   }
@@ -46,7 +47,7 @@
     left: 0
     top: 0
     width: 100%
-    z-index: 100
+    z-index: 500
 
     .logoare
       height: 70px
@@ -71,13 +72,15 @@
       margin-left: 3%
       li
         float: left
-        >a
+        a
           padding: 0 12px
           font-size: $font-size-medium
           font-weight: bold
           color: $color-text-basic
-        >a:hover
+        a:hover
+          display: inline-block
           color: $color-text-blue
+          transform: scale(1.1)
 
     @media (max-width: 800px)
       .nav-bar
@@ -94,5 +97,6 @@
       font-size: 20px
     .icon-bars:hover
       border: 1px solid $color-text-white
+      transform: scale(1.1)
         
 </style>

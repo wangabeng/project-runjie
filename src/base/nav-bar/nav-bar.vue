@@ -1,25 +1,32 @@
 <template>
-  <div class='nav-bar-wrapper' ref='navBarWrapper'>
-    <!--
-      响应布局 当屏幕宽度小于768px时 nav改为竖直排列
-    -->
-    <ul class='nav-content'>
-      <li><a href='#'>首页</a></li>
-      <li><a href='#'>关于润捷</a></li>
-      <li><a href='#'>服务项目</a></li>
-      <li><a href='#'>新闻</a></li>
-      <li><a href='#'>成功案例</a></li>
-      <li><a href='#'>证书样本</a></li>
-      <li><a href='#'>招聘</a></li>
-    </ul>
-  </div>
+  <transition name='navBarAnim'>
+    <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='ifShow'>
+      <!--
+        响应布局 当屏幕宽度小于768px时 nav改为竖直排列
+      -->
+      <ul class='nav-content'>
+        <li><router-link tag='a' to='/'>首页</router-link></li>
+        <li><router-link tag='a' to='/aboutus'>关于润捷</router-link></li>
+        <li><router-link tag='a' to='/service'>服务项目</router-link></li>
+        <li><router-link tag='a' to='/news'>新闻</router-link></li>
+        <li><router-link tag='a' to='/case'>成功案例</router-link></li>
+        <li><router-link tag='a' to='/sample'>证书样本</router-link></li>
+        <li><router-link tag='a' to='/jobs'>招聘</router-link></li>
+      </ul>
+    </div>
+  </transition>  
 </template>
 
 <script>
   export default {
+    data () {
+      return {
+        ifShow: false
+      };
+    },
     created () {
       this.$root.eventBus.$on('showNav', (msg) => {
-        msg === true? this.$refs.navBarWrapper.style.display = 'block': this.$refs.navBarWrapper.style.display = 'none';
+        this.ifShow = msg;
       });
     }
   }
@@ -31,8 +38,8 @@
   .nav-bar-wrapper
     width: 100%
     position: fixed
-    background-color: $color-background-blue
-    display: none
+    background-color: $color-background-blue-pure
+    -display: none
     top: 102px
     left: 0
     z-index: 100
@@ -55,4 +62,9 @@
         >a:hover
           background: $color-background-dark
 
+    &.navBarAnim-enter, &.navBarAnim-leave-to
+      transform: translate3d(0,-100%,0)
+    &.navBarAnim-enter-active, &.navBarAnim-leave-active
+      transition-duration: 0.3s
+      transition-timing-function: ease-in-out
 </style>

@@ -103,5 +103,48 @@ props: {
   }
 
   // 备注：
-  在根vue注册eventBus
+  在根vue注册eventBus 我在入口文件main.js的vue创建一个data
+    main.js
+    new Vue({
+      data: {
+        eventBus: new Vue()
+      }
+    })
+
+    在组件中这样使用
+    emit事件 传递参数
+    this.$root.eventBus.$emit('fnName', '参数')
+
+    监听事件 接收参数
+    this.$root.eventBus.$on('fnName', (mesg) => {
+      dosth(msg)
+    })
+
+#  transition动画用于a标签时会失效 解决办法 把a标签转成display: inline-block
+  参见m-header组件
+
+# vue过度动画案例
+
+  <template>
+    <transition name='navBarAnim'>
+      <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='ifShow'>
+        ------
+      </div>
+    </transition>  
+  </template>
+
+  .nav-bar-wrapper
+    width: 100%
+    position: fixed
+    ---
+    /* 定义过度动画 一般样式只定义enter leave-to 即开始和结束的状态 -enter-active -leave-active定义动画时间 过渡函数 &表示父级 nav-bar-wrapper*/
+    &.navBarAnim-enter, &.navBarAnim-leave-to
+      transform: translate3d(0,-100%,0)
+    &.navBarAnim-enter-active, &.navBarAnim-leave-active
+      transition-duration: 0.3s
+      transition-timing-function: ease-in-out
+      transition-property: transform
+
+# vue-cli项目中全局引入jquery
+  https://segmentfault.com/a/1190000007020623
   

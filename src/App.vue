@@ -3,6 +3,7 @@
     <m-header></m-header>
     <nav-bar></nav-bar>
     <poster-pic></poster-pic>
+    <router-view/>
   </div>
 </template>
 

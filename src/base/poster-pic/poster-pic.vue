@@ -25,7 +25,7 @@
           // console.log(this.$refs.posterPic.clientHeight, this.$refs.text.clientHeight, this.posterHeight);
           this.$refs.mask.style.height = `${this.posterHeight}px`;
           this.$refs.posterPicWrapper.style.height = `${this.posterHeight}px`;
-        }, 50);
+        }, 20);
       }
     },
     mounted () {
@@ -44,7 +44,7 @@
   .poster-pic-wrapper
     width: 100%
     position: relative
-    top: 102px
+    margin-top: 102px
     background: $color-background-black
     .poster-pic
       width: 100%
