@@ -147,4 +147,97 @@ props: {
 
 # vue-cli项目中全局引入jquery
   https://segmentfault.com/a/1190000007020623
-  
+
+# 一定要有全局的意识 项目还没完成 就出现了打包路径的问题 查看打包后的源代码 路径不对 修改
+  /config/index.js
+  assetsPublicPath: '/', 改为相对路径 assetsPublicPath: './',
+
+  打包后发现基本没问题 就是字体文件路径不对
+  发现打包后的引用路径是(多了一个 static/css/)
+  file:///D:/runjie/dist/static/css/static/fonts/fontawesome-webfont.af7ae50.woff2 
+  但是实际路径是：
+  file:///D:/runjie/dist/          /static/fonts/fontawesome-webfont.af7ae50.woff2 
+
+  字体文件目录结构是这样的
+  /common/css/font-awesome.styl
+  /common/fonts/fontawesome-webfont.eot
+  /common/fonts/fontawesome-webfont.svg
+
+  font-awesome.styl 中引用字体文件是这样引用的
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0')
+
+  改成
+  common/fonts/fontawesome-webfont.svg 打包后还是出现相同的路径
+  file:///D:/runjie/dist/static/css/static/fonts/fontawesome-webfont.af7ae50.woff2
+
+  --- 做了很多尝试均失败 最后参照
+  http://blog.csdn.net/fengjingyu168/article/details/78789074
+  最后解决办法：
+  修改webpack.config.js的对样式文件的匹配规则 把limit选项注释掉 先这样解决吧 毕竟不能把很多时间花在处理打包工具上 应该花更多时间在处理业务 优化代码上(网上有遇到同样问题者 https://segmentfault.com/q/1010000008372874)
+    {
+      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        // 注释掉
+        // limit: 10000,
+        name: utils.assetsPath('/fonts/[name].[hash:7].[ext]') 
+      }
+    }
+
+综上 解决路径问题 需要做到两点。
+
+# 行内元素浮动后就有了宽高
+  例如li>a a浮动后 可以设定其宽高了 当然a的父元素 li需要清除浮动
+
+# vue2版本不支持IE9
+  所以需要针对IE9写非兼容的方案 提示用户升级浏览器
+  参照segmentfault
+  <!--[if lt IE 9]><div class="alert-danger" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank" class="alert-link" href="http://www.google.cn/chrome/browser/desktop/index.html">立即升级</a></div><![endif]-->
+
+  在index.html文件加入对IE浏览器的判断
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

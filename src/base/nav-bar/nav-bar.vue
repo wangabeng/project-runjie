@@ -5,13 +5,13 @@
         响应布局 当屏幕宽度小于768px时 nav改为竖直排列
       -->
       <ul class='nav-content'>
-        <li><router-link tag='a' to='/'>首页</router-link></li>
-        <li><router-link tag='a' to='/aboutus'>关于润捷</router-link></li>
-        <li><router-link tag='a' to='/service'>服务项目</router-link></li>
-        <li><router-link tag='a' to='/news'>新闻</router-link></li>
-        <li><router-link tag='a' to='/case'>成功案例</router-link></li>
-        <li><router-link tag='a' to='/sample'>证书样本</router-link></li>
-        <li><router-link tag='a' to='/jobs'>招聘</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/'>首页</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/aboutus'>关于润捷</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/service'>服务项目</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/news'>新闻</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/case'>成功案例</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/sample'>证书样本</router-link></li>
+        <li class='clearfix'><router-link tag='a' to='/jobs'>招聘</router-link></li>
       </ul>
     </div>
   </transition>  
@@ -39,7 +39,6 @@
     width: 100%
     position: fixed
     background-color: $color-background-blue-pure
-    -display: none
     top: 102px
     left: 0
     z-index: 100
@@ -48,17 +47,16 @@
       flex-direction: column
       padding: 10px 0
       li
-        flex: 1
-        display: flex
-        justify-content: left
-        line-height: 58px
-        height: 58px
-
+        width: 100%
         a
+          float:left
+          width: 100%
+          line-height: 58px
+          height: 58px
           color: $color-text-white
           padding-left: 4%
           font-size: $font-size-medium-x
-          flex: 1
+
         >a:hover
           background: $color-background-dark
 
