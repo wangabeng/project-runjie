@@ -43,7 +43,7 @@
         </li>
       </ul>
     </div>
-    <i class="fa fa-bars fa-2x icon-bars" @click.stop='showNav'></i>
+    <i class="fa fa-2x icon-bars" :class="{'fa-bars': !ifShow, 'fa-close': ifShow }" @click.stop='showNav'></i>
   </div>
 </template>
 
@@ -97,6 +97,9 @@
       float: left
       margin-top: 60px
       margin-left: 3%
+      @media (max-width: 960px)
+        &
+          display: none
       li
         float: left
         a
@@ -109,11 +112,9 @@
           color: $color-text-blue
           transform: scale(1.1)
 
-    @media (max-width: 800px)
-      .nav-bar
-        display: none
-
     .icon-bars
+
+      display: none
       color: $color-text-blue
       float:right
       margin-right: 2%
@@ -122,6 +123,9 @@
       border: 1px solid $color-text-blue
       border-radius: 5px
       font-size: 20px
+      @media (max-width: 960px)
+        &
+          display: block
     .icon-bars:hover
       border: 1px solid $color-text-white
       transform: scale(1.1)

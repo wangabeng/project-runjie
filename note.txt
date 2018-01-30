@@ -221,7 +221,11 @@ props: {
   二种可能是 用git bash操作容易出问题。
   最大可能就是32位的mongodb不稳定.
 
-#
+# git下载远程代码更新到本地最佳实践 
+  场景：github代码已经更新 本地还是以前的版本 
+  1 git fetch origin dev:dev // 下载远程主机origin的dev分支到本地dev分支 如果:dev 不写 就下载到本地当前分支
+
+  2 git merge origin/dev // 把远程下载下来的代码合并到本地仓库，远程的和本地的合并 OK
 #
 #
 #

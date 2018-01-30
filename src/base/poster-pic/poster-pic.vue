@@ -25,7 +25,7 @@
           // console.log(this.$refs.posterPic.clientHeight, this.$refs.text.clientHeight, this.posterHeight);
           this.$refs.mask.style.height = `${this.posterHeight}px`;
           this.$refs.posterPicWrapper.style.height = `${this.posterHeight}px`;
-        }, 20);
+        }, 30);
       }
     },
     mounted () {
