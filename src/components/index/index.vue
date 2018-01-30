@@ -1,6 +1,8 @@
 <template>
   <div class='index-wrapper'>
-    this is index
+    <div>
+      <p>this is text</p>
+    </div>
   </div>
 </template>
 
@@ -12,5 +14,9 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '~common/stylus/variable.styl'
 
+  .index-wrapper
+    width: 100%
+    height: 88px
+    background-color: $color-background-blue
 
 </style>

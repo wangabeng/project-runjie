@@ -186,6 +186,26 @@ props: {
 
 综上 解决路径问题 需要做到两点。
 
+# vue，node项目上线打包总结
+  1 vue要打包 成静态页面
+  2 服务器端nginx里增加针对该项目的配置文件 见简书项目的配置
+  /etc/nginx/conf.d/
+   jianshu-benkid-cn-80.conf
+  以下是内容：
+    server {
+        listen       80;
+        server_name   jianshu.benkid.cn;
+
+        location / {
+          root /data/www/vue-vuex-router-jianshu-demo;
+          index index.html index.htm;
+        }
+    }
+
+
+  3 node只提供数据服务 做到前后端分离
+  4 跑通了 很好OK
+
 # 行内元素浮动后就有了宽高
   例如li>a a浮动后 可以设定其宽高了 当然a的父元素 li需要清除浮动
 
@@ -196,7 +216,11 @@ props: {
 
   在index.html文件加入对IE浏览器的判断
 
-#
+# 今天又坑了很久的问题 用git bash拷贝数据 insert到本地数据库 总是失败 用putty拷贝到阿里云就没问题 。我分析有两种可能：
+  一种可能是我本地装的是32位的mongodb 据说32位的不太稳定
+  二种可能是 用git bash操作容易出问题。
+  最大可能就是32位的mongodb不稳定.
+
 #
 #
 #

@@ -5,13 +5,40 @@
         响应布局 当屏幕宽度小于768px时 nav改为竖直排列
       -->
       <ul class='nav-content'>
-        <li class='clearfix'><router-link tag='a' to='/'>首页</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/aboutus'>关于润捷</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/service'>服务项目</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/news'>新闻</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/case'>成功案例</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/sample'>证书样本</router-link></li>
-        <li class='clearfix'><router-link tag='a' to='/jobs'>招聘</router-link></li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/'>
+            <i class="fa fa-home fa-1x"></i>&nbsp;&nbsp;首页
+          </router-link>
+        </li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/aboutus'>
+            <i class="fa fa-globe fa-1x"></i>&nbsp;&nbsp;关于润捷
+          </router-link>
+        </li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/service'><i class="fa fa-list fa-1x">
+            </i>&nbsp;&nbsp;服务项目
+          </router-link>
+        </li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/news'>
+            <i class="fa fa-newspaper-o fa-1x"></i>&nbsp;&nbsp;新闻
+          </router-link>
+        </li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/case'>
+            <i class="fa fa-book fa-1x"></i>&nbsp;&nbsp;成功案例
+          </router-link>
+        </li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/sample'>
+            <i class="fa fa-university fa-1x"></i>&nbsp;&nbsp;证书样本
+          </router-link></li>
+        <li class='clearfix'>
+          <router-link tag='a' to='/jobs'>
+            <i class="fa fa-handshake-o fa-1x"></i>&nbsp;&nbsp;招聘
+          </router-link>
+        </li>
       </ul>
     </div>
   </transition>  
