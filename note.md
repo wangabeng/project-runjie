@@ -245,17 +245,6 @@ props: {
   Vue.prototype.$http = axios
 
   在 main.js 中添加了这两行代码之后，就能直接在组件的 methods 中使用 $http命令
-  methods: {
-    postData () {
-      this.$http({
-        method: 'post',
-        url: '/user',
-        data: {
-          name: 'xiaoming',
-          info: '12'
-        }
-     })
-  }
 
   执行 GET 请求
   // 向具有指定ID的用户发出请求
