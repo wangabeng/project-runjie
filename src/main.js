@@ -6,6 +6,9 @@ import router from './router'
 import 'common/stylus/index.styl'
 import $ from 'jquery'
 
+import axios from 'axios'
+Vue.prototype.$http = axios
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

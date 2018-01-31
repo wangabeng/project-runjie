@@ -226,7 +226,111 @@ props: {
   1 git fetch origin dev:dev // 下载远程主机origin的dev分支到本地dev分支 如果:dev 不写 就下载到本地当前分支
 
   2 git merge origin/dev // 把远程下载下来的代码合并到本地仓库，远程的和本地的合并 OK
-#
+
+# 关于axios在vue浏览器端及服务端node的使用
+  1 在vue中的使用
+  安装
+  $ npm install axios
+  引用
+  或者使用cdn：
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  在vue中引用
+  安装其他插件的时候，可以直接在 main.js 中引入并使用 Vue.use()来注册，但是 axios并不是vue插件，所以不能 使用Vue.use()，所以只能在每个需要发送请求的组件中即时引入。
+
+  为了解决这个问题，我们在引入 axios 之后，通过修改原型链，来更方便的使用。
+
+  //main.js
+  import axios from 'axios'
+  Vue.prototype.$http = axios
+
+  在 main.js 中添加了这两行代码之后，就能直接在组件的 methods 中使用 $http命令
+  methods: {
+    postData () {
+      this.$http({
+        method: 'post',
+        url: '/user',
+        data: {
+          name: 'xiaoming',
+          info: '12'
+        }
+     })
+  }
+
+  执行 GET 请求
+  // 向具有指定ID的用户发出请求
+  $http.get('/user?ID=12345')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  // 也可以通过 params 对象传递参数
+  $http.get('/user', {
+      params: {
+        ID: 12345
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    执行 POST 请求
+    $http.post('/user', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    执行多个并发请求
+    复制代码
+    function getUserAccount() {
+      return $http.get('/user/12345');
+    }
+    function getUserPermissions() {
+      return $http.get('/user/12345/permissions');
+    }
+    axios.all([getUserAccount(), getUserPermissions()])
+      .then($http.spread(function (acct, perms) {
+        //两个请求现已完成
+      }));
+
+    2 在node中可以做代理服务器转发请求
+    详见我的music-player项目
+    代码如下：
+    // 设置服务器代理 获取歌词
+    apiRoutes.get('/lyric', function (req, res) {
+      var url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
+      axios.get(url, {
+        headers: {
+          referer: 'https://y.qq.com/portal/player.html',
+          host: 'c.y.qq.com'
+        },
+        params: req.query
+      }).then((response) => {
+        // 处理歌词数据 现在是一个jsonp的格式
+        var ret = response.data
+        if (typeof ret === 'string') {
+          var reg = /^\w+\(({[^()]+})\)$/
+          var matches = ret.match(reg)
+          if (matches) {
+            ret = JSON.parse(matches[1])
+          }
+        }
+        res.json(ret)
+      }).catch((e) => {
+        console.log(e)
+      })
+    })
 #
 #
 #
