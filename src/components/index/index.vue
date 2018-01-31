@@ -1,12 +1,12 @@
 <template>
   <div class='index-wrapper'>
-    <div class='title-wrapper' ref='titleWrapper'> <!-- 100% 相对定位-->
-      <div class='move-wrapper' ref='moveWrapper'> <!-- 200% 绝对定位  不显示滚动条-->
+    <div class='title-wrapper ' ref='titleWrapper'> <!-- 100% 相对定位 不显示滚动条-->
+      <div class='move-wrapper clearfix' ref='moveWrapper'> <!-- 200% 绝对定位  -->
         <h3> <!-- 50% 浮动-->
-          {{newsTitle[currentIndex]}}
+          left{{newsTitle[currentIndex]}}{{index}}
         </h3>
         <h3> <!-- 50% 浮动-->
-          {{newsTitle[currentIndex + 1]}}
+          right{{newsTitle[currentIndex + 1]}}{{index+1}}
         </h3>      
       </div>
     </div>
@@ -21,7 +21,9 @@
     data () {
       return {
         allNews: [],
-        currentIndex: 0
+        currentIndex: 0,
+        curWidth: '',
+        index: 0
       };
     },
     computed: {
@@ -36,6 +38,8 @@
     created () {
       // console.log(addP);
       this.request();
+    },
+    mounted () {
       this.autoBroadcast();
     },
     methods: {
@@ -59,10 +63,17 @@
         clearInterval(timer);
         var timer= setInterval(() => {
           // console.log(_this.$refs.moveWrapper);
+          this.index++;
+          this.getWidth();
+          this.$refs.moveWrapper.style.left = '0';
           $(_this.$refs.moveWrapper).animate({
-            left: '-100px'
-          }, 100);
-        }, 1500);
+            left: _this.curWidth
+          }, 1500);
+        }, 5000);
+      },
+      // 实时计算显示区宽度
+      getWidth () {
+        this.curWidth = '-' + this.$refs.titleWrapper.clientWidth + 'px';
       }
     }
   }
@@ -74,21 +85,21 @@
   .index-wrapper
     width: 100%
     height: 88px
-    background-color: $color-background-blue
+    -background-color: $color-background-blue
 
     .title-wrapper
-      position: relative
-      left: 0;
-      top: 0;
       width: 100%
-      -overflow: hidden
+      overflow: hidden
 
       .move-wrapper
         width: 200%
-        position: absolute
-
+        position: relative
+        left: 0;
+        top: 0;
+        z-index: 300
         h3
           width: 50%
           float: left
+          background: red
 
 </style>
