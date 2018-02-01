@@ -4,7 +4,7 @@
     <nav-bar></nav-bar>
     <poster-pic></poster-pic>
     <router-view/>
-    <div>footer</div>
+    <m-footer></m-footer>
   </div>
 </template>
 
@@ -12,13 +12,15 @@
 import MHeader from 'base/m-header/m-header.vue'
 import NavBar from 'base/nav-bar/nav-bar.vue'
 import PosterPic from 'base/poster-pic/poster-pic.vue'
+import MFooter from 'base/m-footer/m-footer.vue'
 
 export default {
   name: 'App',
   components: {
     MHeader,
     NavBar,
-    PosterPic
+    PosterPic,
+    MFooter
   }
 }
 </script>
