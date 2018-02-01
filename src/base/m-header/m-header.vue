@@ -58,7 +58,6 @@
       showNav () {
         this.ifShow = !this.ifShow;
         this.$root.eventBus.$emit('showNav', this.ifShow);
-        console.log($);
       }
     }
   }
