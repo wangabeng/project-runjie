@@ -1,13 +1,21 @@
 <template>
   <div class='index-wrapper'>
-    <div class='title-wrapper ' ref='titleWrapper'> <!-- 100% 相对定位 不显示滚动条-->
-      <div class='move-wrapper clearfix' ref='moveWrapper'> <!-- 200% 绝对定位  -->
-        <h3> <!-- 50% 浮动-->
-          left{{newsTitle[currentIndex]}}{{index}}
-        </h3>
-        <h3> <!-- 50% 浮动-->
-          right{{newsTitle[currentIndex + 1]}}{{index+1}}
-        </h3>      
+    <div class='title-wrapper ' ref='titleWrapper'> <!-- 100%  不显示滚动条-->
+      <div class='move-wrapper clearfix' ref='moveWrapper'> <!-- 200% 相对定位  -->
+        <div class='move-content clearfix'> <!-- 50% 浮动-->
+          <h3 class='bord-left'>认证资讯</h3>
+          <h3 class='bord-center'> <!-- 50% 浮动-->
+            {{newsTitle[currentIndex % newsTitle.length]}}
+          </h3>
+          <input class='bord-right' type='button' value='了解更多'>
+        </div>
+        <div class='move-content clearfix'> <!-- 50% 浮动-->
+          <h3 class='bord-left'>咨询</h3>
+          <h3 class='bord-center'> <!-- 50% 浮动-->
+            {{newsTitle[(currentIndex + 1) % newsTitle.length]}}
+          </h3>
+          <input class='bord-right' type='button' value='了解更多'>
+        </div>
       </div>
     </div>
 
@@ -36,7 +44,6 @@
       }
     },
     created () {
-      // console.log(addP);
       this.request();
     },
     mounted () {
@@ -64,11 +71,14 @@
         var timer= setInterval(() => {
           // console.log(_this.$refs.moveWrapper);
           this.index++;
+          this.currentIndex++;
           this.getWidth();
           this.$refs.moveWrapper.style.left = '0';
           $(_this.$refs.moveWrapper).animate({
             left: _this.curWidth
-          }, 1500);
+          }, {
+            easing: 'swing'
+          }, 3500);
         }, 5000);
       },
       // 实时计算显示区宽度
@@ -84,8 +94,9 @@
 
   .index-wrapper
     width: 100%
-    height: 88px
-    -background-color: $color-background-blue
+    height: 50px
+    padding: 19px 0
+    background-color: $color-background-blue
 
     .title-wrapper
       width: 100%
@@ -96,10 +107,80 @@
         position: relative
         left: 0;
         top: 0;
-        z-index: 300
-        h3
+        .move-content
           width: 50%
           float: left
-          background: red
+
+          .bord-left
+            widht: 20%
+            float: left
+            line-height: 50px
+            height: 50px
+            margin-left: 5%
+            padding-right: 2%
+            border-right: 1px solid $color-text-white
+            color: $color-text-white
+          .bord-center
+            width: 50%
+            float: left
+            line-height: 50px
+            height: 50px
+            margin-left: 2%
+            color: $color-text-white
+          .bord-right
+            float: right
+            margin-right: 5%
+            color: $color-text-white
+            background-color: $color-background-blue
+            border: 1px solid $color-text-white
+            padding: 0 40px
+            margin-top: 4px
+            height: 40px
+            line-height: 40px
+            border-radius: 40px
+  
+  @media (max-width: 768px)
+    .index-wrapper
+      width: 100%
+      height: auto
+
+      .title-wrapper
+        width: 100%
+
+        .move-wrapper
+          width: 200%
+          position: relative
+          left: 0;
+          top: 0;
+          .move-content
+            width: 50%
+            float: left
+
+            .bord-left
+              float: none
+              line-height: 50px
+              height: 50px
+              color: $color-text-white
+              text-align: center
+              margin: 0 auto
+              border: none
+            .bord-center
+              width: 100%
+              float: none
+              line-height: 50px
+              height: 50px
+              color: $color-text-white
+              text-align: center
+              margin: 0
+            .bord-right
+              float: none
+              color: $color-text-white
+              background-color: $color-background-blue
+              border: 1px solid $color-text-white
+              height: 40px
+              line-height: 40px
+              border-radius: 40px
+              margin: 0 auto
+              display: block
 
 </style>
