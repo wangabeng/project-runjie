@@ -96,7 +96,7 @@
       float: left
       margin-top: 60px
       margin-left: 3%
-      @media (max-width: 960px)
+      @media (max-width: 800px)
         &
           display: none
       li
@@ -106,6 +106,9 @@
           font-size: $font-size-medium
           font-weight: bold
           color: $color-text-basic
+          &.router-link-exact-active
+            color: $color-text-blue
+
         a:hover
           display: inline-block
           color: $color-text-blue
@@ -122,11 +125,11 @@
       border: 1px solid $color-text-blue
       border-radius: 5px
       font-size: 20px
-      @media (max-width: 960px)
+      @media (max-width: 800px)
         &
           display: block
     .icon-bars:hover
       border: 1px solid $color-text-white
       transform: scale(1.1)
-        
+
 </style>

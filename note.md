@@ -320,9 +320,45 @@ props: {
         console.log(e)
       })
     })
-#
-#
-#
+
+# 手写jsop
+  <script type="text/javascript">
+    function callback (data) {
+      window.data = data;
+    }
+    
+  </script>
+  <script type="text/javascript">
+  callback({
+    'a':'124',
+    'b':'456'
+  })
+  </script>
+
+  <script>
+    console.log(data);
+  </script>
+
+# 遇到的问题 页面多处需要获取数据 如新闻数据 联系我们数据 service数据 认证列表数据等等
+  A页面可能需要news contactus service数据
+  B页面可能需要contactus service数据
+  C页面需要certi service数据
+
+  借鉴音乐App的做法 
+  把这些方法封装在公共js里
+  具体：
+  1 在src/common/js
+  创建公共 jsop方法
+  2 在src/api中创建公共配置参数和各自的方法
+  公共配置参数文件
+  config.js
+  具体请求歌单数据封装在song.js
+  具体请求歌手数据封装在singer.js
+  具体请求搜索数据封装在search.js
+  3 使用数据 在各个组件created的阶段去调用封装好的song.js 这样就很方便
+  4 在我的项目中 可以借鉴这样的做法
+
+# vue中餐computed中得不到ajax请求的数据，因为ajax是异步的，而computed是同步的
 #
 #
 #

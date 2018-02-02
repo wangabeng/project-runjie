@@ -22,7 +22,9 @@
 </template>
 
 <script>
-  import addP from 'src/api/addp.js'
+  import addP from 'common/js/addP.js'
+  import getNews from 'src/api/getnews.js'
+
   import Field from 'components/field/field.vue'
 
   export default {
@@ -44,7 +46,7 @@
       }
     },
     created () {
-      this.request();
+      this._getNews();
     },
     mounted () {
       this.autoBroadcast();
@@ -54,14 +56,10 @@
     },
     methods: {
       // 发送ajax请求新闻内容
-      request () {
+      _getNews () {
         var _this = this;
-        this.$root.$http.get('http://localhost:3002/find', {
-          params: {
-            contentName: 'news'
-          }        
-        }).then(function (response) {
-          console.log(response.data);
+        getNews().then(function (response) {
+          // console.log(response);
           _this.allNews = response.data;
         }).catch(function (error) {
           console.log(error);
