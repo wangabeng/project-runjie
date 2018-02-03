@@ -359,7 +359,17 @@ props: {
   4 在我的项目中 可以借鉴这样的做法
 
 # vue中餐computed中得不到ajax请求的数据，因为ajax是异步的，而computed是同步的
-#
+
+# background图片如何做到自适应
+  body{
+    font-family: "华文细黑";
+    width: 100%;
+    height:auto;
+    // 关键参数 
+    background:url("../img/Flyer-bg.png") no-repeat;
+    // IE8及以下不支持
+    background-size: 100%;
+  }
 #
 #
 #

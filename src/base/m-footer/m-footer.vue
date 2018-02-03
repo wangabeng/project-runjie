@@ -15,8 +15,9 @@ export default {
 
   .footer-wrapper
     background: $color-background-footer
-    padding: 50px
+    padding: 50px 50px 50px 5%
     height: 30px
     color: $color-text-basic
     font-size: $font-size-small
+    border-top: 1px solid $color-text-white
 </style>
