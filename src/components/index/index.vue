@@ -62,6 +62,7 @@
         width: 100%
         border: none
         display: block
+
       h3
         position: absolute
         left: 60%
