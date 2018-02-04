@@ -1,6 +1,10 @@
-import getData from 'common/js/getdata.js';
-import {URL, SERVICE} from 'src/api/config.js';
+import {getData, getCount} from 'common/js/getdata.js';
+import {URLSEARCH, URLCOUNT, SERVICE} from 'src/api/config.js';
 
-export default function getNews () {
-  return getData(URL, SERVICE);
+export function getNews () {
+  return getData(URLSEARCH, SERVICE);
+}
+
+export function getNewsCount () {
+  return getCount(URLCOUNT, SERVICE);
 }

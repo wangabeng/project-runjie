@@ -1,6 +1,10 @@
-import getData from 'common/js/getdata.js';
-import {URL, GETCERTIFICATION} from 'src/api/config.js';
+import {getData, getCount} from 'common/js/getdata.js';
+import {URLSEARCH, URLCOUNT, GETCERTIFICATION} from 'src/api/config.js';
 
-export default function getCertification () {
-  return getData(URL, GETCERTIFICATION);
+export function getCertification () {
+  return getData(URLSEARCH, GETCERTIFICATION);
+}
+
+export function getCertificationCount () {
+  return getCount(URLCOUNT, GETCERTIFICATION);
 }

@@ -1,6 +1,10 @@
-import getData from 'common/js/getdata.js';
-import {URL, ABOUTUS} from 'src/api/config.js';
+import {getData, getCount} from 'common/js/getdata.js';
+import {URLSEARCH, ABOUTUS} from 'src/api/config.js';
 
-export default function getAboutus () {
-  return getData(URL, ABOUTUS);
+export function getAboutus () {
+  return getData(URLSEARCH, ABOUTUS);
+}
+
+export function getAboutusCount () {
+  return getCount(URLCOUNT, ABOUTUS);
 }

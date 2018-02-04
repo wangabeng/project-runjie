@@ -20,7 +20,7 @@
   import Broad from 'components/broad/broad.vue'
   import Field from 'components/field/field.vue'
 
-  import getAboutus from 'src/api/getaboutus.js'
+  import {getAboutus} from 'src/api/getaboutus.js'
 
   export default {
     data () {

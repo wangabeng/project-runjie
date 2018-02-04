@@ -23,7 +23,7 @@
 
 <script>
   import addP from 'common/js/addP.js'
-  import getNews from 'src/api/getnews.js'
+  import {getNews} from 'src/api/getnews.js'
 
   import Field from 'components/field/field.vue'
 

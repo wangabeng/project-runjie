@@ -370,8 +370,18 @@ props: {
     // IE8及以下不支持
     background-size: 100%;
   }
-#
-#
+
+# 路由跳转的方式之一 vue-player作者用的方法
+    点击item定义点击函数：
+      selectItem (item) {
+        this.$router.push({
+          path: `/recommend/${item.dissid}`
+        })
+        this.setDisc(item)  // 设置vuex数据
+      },
+    同时在路由router中定义
+       path: '/recommend/:id'
+# 关于option元素的点击事件及绑定 见https://cn.vuejs.org/v2/guide/forms.html#%E9%80%89%E6%8B%A9%E6%A1%86
 #
 #
 #
