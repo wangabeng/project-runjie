@@ -382,7 +382,10 @@ props: {
     同时在路由router中定义
        path: '/recommend/:id'
 # 关于option元素的点击事件及绑定 见https://cn.vuejs.org/v2/guide/forms.html#%E9%80%89%E6%8B%A9%E6%A1%86
-#
+
+# vue绑定的事件如何解除
+  使用v-on:click绑定的事件如何移除
+  https://segmentfault.com/q/1010000004346194
 #
 #
 #
