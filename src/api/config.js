@@ -6,4 +6,4 @@ export const CERTIFICATION = 'certification';
 export const NEWS = 'news'; 
 export const SERVICE = 'service';
 
-export const PAGECAPACITY = 5; 
+export const PAGECAPACITY = 6; 

@@ -2,10 +2,12 @@
   <div class='news-wrapper clearfix'>
     <common-left></common-left>
     <common-content 
+      v-if='pageCount' 
       :queryTitle='queryTitle' 
-      :originCurPage='originCurPage' 
+      :originCurPage='originCurPage'
+      :pageCount='pageCount'  
       :subjectCount='newsCount' 
-      :subjectContent='news'
+      :subjectContent='news' 
       @curPageChange='curPageChange'
     ></common-content><!-- 给子元素传递requestTitle news -->
     <div class='test'>
@@ -17,6 +19,7 @@
   // 导入组件
   import CommonLeft from 'src/base/common-left/common-left.vue'
   import CommonContent from 'src/base/common-content/common-content.vue'
+  import {PAGECAPACITY} from 'src/api/config.js'
 
   // 导入api
   import {getNews, getNewsCount} from 'src/api/getnews.js'
@@ -24,10 +27,11 @@
   export default {
     data () {
       return {
-        queryTitle: 'news',
+        queryTitle: '新闻',
         news:[],
         newsCount: 0,
-        originCurPage: 2
+        pageCount: null, // 由ajax请求获取 默认为空
+        originCurPage: 1
       };
     },
     components: {
@@ -37,7 +41,6 @@
     created () {
       // 请求一共有多少页
       // 请求当前页的内容 默认是第一页的内容
-      var _this = this;
       this._getNewsCount();
       this._getNews(this.curPage);
       // 然后把以上数据传给子元素
@@ -48,23 +51,26 @@
         getNews(curPage).then(function (response) {
           // 获取到新闻列表 是个数组
           _this.news = response.data;
-          console.log('all news:',response.data);
         }).catch(function (error) {
           console.log(error);
         });
       },
       _getNewsCount () {
         var _this = this;
-        getNewsCount(this.curPage).then(function (response) {
+        getNewsCount().then(function (response) {
           // 获取到新闻列表 是个数组
           _this.newsCount = response.data;
-          console.log('count',response.data);
+          // 然后计算出总页数
+          _this.pageCount = Math.floor(_this.newsCount / PAGECAPACITY);
         }).catch(function (error) {
           console.log(error);
         });
       },
       curPageChange (curPage) {
         console.log('父元素监听到:', curPage);
+        // 监听到请求的数据curPage
+        // 重新发送ajax请求当前的新闻数据 自动通过props传递给子元素
+        this._getNews(curPage);
       }
     }
   }

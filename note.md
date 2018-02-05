@@ -386,7 +386,26 @@ props: {
 # vue绑定的事件如何解除
   使用v-on:click绑定的事件如何移除
   https://segmentfault.com/q/1010000004346194
-#
+  // 条件绑定事件
+  @click='!lastFlag && selectPage(curPage+1)' 
+
+# props的值是由ajax请求得到 然后传递给子元素的时候
+  参照： https://segmentfault.com/q/1010000008201831
+  可以先设置该值为null
+  在子元素标签加v-if 绑定thisvalue
+  <child-elenment v-if='thisvalue' :thisvalue='thisvalue'></child-element> 
+
+  见该项目：
+  news.vue组件:
+    <common-content 
+      v-if='pageCount' 
+      :queryTitle='queryTitle' 
+      :originCurPage='originCurPage'
+      :pageCount='pageCount'  
+      :subjectCount='newsCount' 
+      :subjectContent='news' 
+      @curPageChange='curPageChange'
+    ></common-content><!-- 给子元素传递requestTitle news -->
 #
 #
 #

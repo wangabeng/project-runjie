@@ -15,9 +15,9 @@
 
   .common-left
     width: 30%
-    height: 1500px
     background: blue
     float:left
+    height: 200px
 
 
 </style>

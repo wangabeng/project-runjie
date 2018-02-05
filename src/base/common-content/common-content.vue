@@ -1,22 +1,34 @@
 <template>
   <div class='common-content'>
+    <h3>{{queryTitle}}</h3>
+    <div class='news-list'>
+      <ul>
+        <li v-for='newsItem in subjectContent'>
+          <a>
+            <span>{{newsItem.title}}</span>
+            <span>{{newsItem.publicDate}}</span>
+            <span>{{newsItem.pageView}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <div class='page-info'>
-      <span>共{{subjectCount}}页</span>
+      <span>共{{pageCount}}页</span>
       <span>第{{curPage}}页</span>
       <span @click='selectPage(0+1)'>首页</span>
-      <span @click='selectPage(curPage-1)' ref='firstPage'>上一页</span>
+      <span @click='firstFlag && selectPage(curPage-1)' ref='firstPage'>上一页</span>
       <span 
-        v-for='(item, index) in subjectContent.length'
+        v-for='(item, index) in pageCount'
         @click='selectPage(index+1)'
       >{{index  + 1}}</span>
-      <span @click='selectPage(curPage+1)' ref='lastPage'>下一页</span>
-      <span @click='selectPage(subjectContent.length)'>尾页</span>
+      <span @click='lastFlag && selectPage(curPage+1)' ref='lastPage'>下一页</span>
+      <span @click='selectPage(pageCount)'>尾页</span>
       <span>转到第</span>
       <select @change='selectPage(selected)' v-model='selected'>
-        <option v-for='(item, index) in subjectContent.length' 
+        <option v-for='(item, index) in pageCount' 
         :value='index + 1'>{{index  + 1}}</option>
       </select>
-      <span>页</span>selected{{selected}}
+      <span>页</span>
 
     </div>
   </div>
@@ -29,7 +41,9 @@
     data () {
       return {
         selected: '',
-        curPage: 0
+        curPage: 0,
+        firstFlag: false,
+        lastFlag: true
       };
     },
     props: {
@@ -38,6 +52,10 @@
         default: ''
       },
       originCurPage: {
+        type: Number,
+        default: 1
+      },
+      pageCount: {
         type: Number,
         default: 1
       },
@@ -52,7 +70,7 @@
     },
     methods: {
       selectPage (selected) {
-        // 改变当前页 并发出ajax请求 
+        // 改变当前页 由watch监控当前页
         this.curPage = selected;
         this.selected = selected;
         // console.log('curpage', this.curPage);
@@ -67,8 +85,19 @@
     },
     watch: {
       curPage (val) {
-        console.log('curpage change:', val);
-        this.$emit('curPageChange', this.curPage);
+
+        val === 1? this.firstFlag = false: this.firstFlag = true;
+        val === this.pageCount? this.lastFlag = false: this.lastFlag = true;
+
+        console.log('val: ', val, 'firstFlag:', this.firstFlag, 'lastFlag:', this.lastFlag, 'this.pageCount:', this.pageCount);
+
+        // console.log('curpage change:', val);
+        if (val >= 1 && val <= this.pageCount) {
+          this.$emit('curPageChange', this.curPage);
+        } else {
+          return;
+        }
+        
       }
     }
   }
@@ -80,6 +109,5 @@
   .common-content
     width: 70%
     float: right
-    height: 1500px
 
 </style>
