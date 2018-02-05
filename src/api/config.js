@@ -6,4 +6,13 @@ export const CERTIFICATION = 'certification';
 export const NEWS = 'news'; 
 export const SERVICE = 'service';
 
-export const PAGECAPACITY = 6; 
+export const PAGECAPACITY = 6;
+
+export const ICONARR = {
+  'aboutus': 'fa-globe',
+  'service': 'fa-list',
+  'news': 'fa-newspaper-o',
+  'case': 'fa-book',
+  'sample': 'fa-university',
+  'jobs': 'fa-handshake-o'
+}

@@ -1,6 +1,6 @@
 <template>
   <div class='index-wrapper'>
-    this is jobs
+    this is job
   </div>
 </template>
 

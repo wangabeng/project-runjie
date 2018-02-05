@@ -9,6 +9,8 @@ import Case from 'components/case/case.vue'
 import Sample from 'components/sample/sample.vue'
 import Jobs from 'components/jobs/jobs.vue'
 
+import Detail from 'components/detail/detail.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,7 +29,13 @@ export default new Router({
     },
     {
       path: '/news',
-      component: News
+      component: News,
+      children: [
+        {
+          path:':title',
+          component: Detail
+        }
+      ]
     },
     {
       path: '/case',

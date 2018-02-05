@@ -406,7 +406,10 @@ props: {
       :subjectContent='news' 
       @curPageChange='curPageChange'
     ></common-content><!-- 给子元素传递requestTitle news -->
-#
+# router组件如何取到父组件的数据
+  目前只能通过父组件传参给url 子组件通过：
+  this.$route.params 获取
+  如果数据量稍多，不可能传到url上然后来获取，音乐app是通过vuex来获取的
 #
 #
 #

@@ -10,8 +10,8 @@
       :subjectContent='news' 
       @curPageChange='curPageChange'
     ></common-content><!-- 给子元素传递requestTitle news -->
-    <div class='test'>
-    </div>
+    
+    <router-view/><!-- detail组件 -->
   </div>
 </template>
 
@@ -27,7 +27,7 @@
   export default {
     data () {
       return {
-        queryTitle: '新闻',
+        queryTitle: 'news',
         news:[],
         newsCount: 0,
         pageCount: null, // 由ajax请求获取 默认为空

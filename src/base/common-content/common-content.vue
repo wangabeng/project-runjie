@@ -3,12 +3,12 @@
     <h3>{{queryTitle}}</h3>
     <div class='news-list'>
       <ul>
-        <li v-for='newsItem in subjectContent'>
-          <a>
+        <li 
+          v-for='(newsItem, index) in subjectContent' 
+          @click='_selectItem(newsItem,index)'
+        >
             <span>{{newsItem.title}}</span>
             <span>{{newsItem.publicDate}}</span>
-            <span>{{newsItem.pageView}}</span>
-          </a>
         </li>
       </ul>
     </div>
@@ -36,6 +36,8 @@
 
 <script>
   // 根据父元素传递过来的数据请求对应的数据 比如父元素传递过来news 就请求news的内容
+
+  import {mapActions} from 'vuex'
 
   export default {
     data () {
@@ -69,6 +71,9 @@
       }
     },
     methods: {
+      ...mapActions([
+        'selectItem'
+      ]),
       selectPage (selected) {
         // 改变当前页 由watch监控当前页
         this.curPage = selected;
@@ -76,6 +81,15 @@
         // console.log('curpage', this.curPage);
         // 如果已经是第一页 点击上一页显示灰色 并且点击的时候返回空
 
+      },
+      _selectItem (item, index) {
+        var _this = this;
+        console.log(item, index);
+        this.$router.push({
+          path: `/${this.queryTitle}/${item._id}`
+        });
+        // 然后把此item的写入vuex 子路由组件detail通过vuex读取
+        this.selectItem({item, index});
       }
     },
     created () {
@@ -89,7 +103,7 @@
         val === 1? this.firstFlag = false: this.firstFlag = true;
         val === this.pageCount? this.lastFlag = false: this.lastFlag = true;
 
-        console.log('val: ', val, 'firstFlag:', this.firstFlag, 'lastFlag:', this.lastFlag, 'this.pageCount:', this.pageCount);
+        // console.log('val: ', val, 'firstFlag:', this.firstFlag, 'lastFlag:', this.lastFlag, 'this.pageCount:', this.pageCount);
 
         // console.log('curpage change:', val);
         if (val >= 1 && val <= this.pageCount) {

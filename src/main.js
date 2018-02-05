@@ -10,6 +10,7 @@ import 'babel-polyfill'
 // 解决移动端300MS点击延迟的问题
 import fastClick from 'fastclick'
 fastClick.attach(document.body)
+import store from './store/index.js'
 
 import axios from 'axios'
 Vue.prototype.$http = axios
@@ -23,6 +24,7 @@ new Vue({
   },
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
