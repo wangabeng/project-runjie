@@ -410,8 +410,64 @@ props: {
   目前只能通过父组件传参给url 子组件通过：
   this.$route.params 获取
   如果数据量稍多，不可能传到url上然后来获取，音乐app是通过vuex来获取的
-#
-#
+
+# 网站整合markdown的方法
+  关键词: markdown编辑器 嵌入到网页
+  https://www.zhihu.com/question/24368769
+  https://www.tuicool.com/articles/3uIjei6
+  https://www.jianshu.com/p/0f80b112a8b6
+  https://www.zybuluo.com/mdeditor
+
+  // 这个最好
+  http://www.qdfuns.com/notes/25080/0ab267e319ea72ea5ad5573ca57de357.html
+  // 还有更好的
+  http://blog.csdn.net/gedonshen/article/details/78271964
+  http://blog.csdn.net/lovejavaydj/article/details/73692917
+
+  这是一个测试网页 亲测有效
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>MarkDown</title>
+      <script type="text/javascript" src="https://cdn.bootcss.com/showdown/1.3.0/showdown.min.js"></script>
+  </head>
+  <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+       font-size: 16px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+      }
+      ul li {
+          line-height: 24px;
+      }
+      blockquote {
+          border-left:#eee solid 5px;
+          padding-left:20px;
+      }
+      code {
+          color:#D34B62;
+          background: #F9F2F4;
+      }
+  </style>
+  <body>
+  <div>
+      <textarea id="content" style="height:400px;width:600px;" onkeyup="compile()"></textarea>
+      <div id="result"></div>
+
+  </div>
+  <script type="text/javascript">
+  function compile(){
+      var text = document.getElementById("content").value;
+      var converter = new showdown.Converter();
+      var html = converter.makeHtml(text);
+      document.getElementById("result").innerHTML = html;
+  }
+  </script>
+  </body>
+  </html>
+# 
 #
 #
 #

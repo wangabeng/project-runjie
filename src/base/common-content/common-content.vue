@@ -1,28 +1,29 @@
 <template>
-  <div class='common-content'>
-    <h3>{{queryTitle}}</h3>
+  <div class='common-content' ref='commonContent'>
+    <h3 class='title'>{{queryTitleCn}}</h3>
     <div class='news-list'>
       <ul>
-        <li 
+        <li class='clearfix'
           v-for='(newsItem, index) in subjectContent' 
           @click='_selectItem(newsItem,index)'
         >
-            <span>{{newsItem.title}}</span>
-            <span>{{newsItem.publicDate}}</span>
+            <span class='title-content'>{{newsItem.title}}</span>
+            <span class='title-date'>{{newsItem.publicDate}}</span>
         </li>
       </ul>
     </div>
+
     <div class='page-info'>
       <span>共{{pageCount}}页</span>
       <span>第{{curPage}}页</span>
-      <span @click='selectPage(0+1)'>首页</span>
-      <span @click='firstFlag && selectPage(curPage-1)' ref='firstPage'>上一页</span>
-      <span 
+      <span @click='selectPage(0+1)' :class='{"unactive": curPage===1}'>首页</span>
+      <span @click='firstFlag && selectPage(curPage-1)' ref='firstPage' :class='{"unactive": curPage===1}'>上一页</span>
+      <span :class='{"active-page": (index+1)===curPage}'
         v-for='(item, index) in pageCount'
         @click='selectPage(index+1)'
       >{{index  + 1}}</span>
-      <span @click='lastFlag && selectPage(curPage+1)' ref='lastPage'>下一页</span>
-      <span @click='selectPage(pageCount)'>尾页</span>
+      <span @click='lastFlag && selectPage(curPage+1)' ref='lastPage' :class='{"unactive": curPage===pageCount}'>下一页</span>
+      <span @click='selectPage(pageCount)' :class='{"unactive": curPage===pageCount}'>尾页</span>
       <span>转到第</span>
       <select @change='selectPage(selected)' v-model='selected'>
         <option v-for='(item, index) in pageCount' 
@@ -45,11 +46,16 @@
         selected: '',
         curPage: 0,
         firstFlag: false,
-        lastFlag: true
+        lastFlag: true,
+        moveFlag: false
       };
     },
     props: {
       queryTitle: {
+        type: String,
+        default: ''
+      },
+      queryTitleCn: {
         type: String,
         default: ''
       },
@@ -90,12 +96,30 @@
         });
         // 然后把此item的写入vuex 子路由组件detail通过vuex读取
         this.selectItem({item, index});
+
+        // 点击后设置此组件左移
+        /* this.moveFlag = true;
+        if (this.moveFlag) {
+          this.$refs.commonContent.style.visibility = 'hidden';
+        } else {
+          this.$refs.commonContent.style.visibility = 'visible';
+        } */
+
+        //实现列表页的隔行变色
+        // $('.news-list li:odd').addClass('odd-dark');
+
       }
     },
     created () {
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
 
+    },
+    updated () {
+      // 实现列表页的隔行变色
+      // created mounted updated生命周期 created是vue对象创建后 mounted是虚拟dom挂载后 updated是data加载后
+      $('.news-list li:odd').addClass('odd-dark');
+      
     },
     watch: {
       curPage (val) {
@@ -121,7 +145,65 @@
   @import '~common/stylus/variable.styl'
 
   .common-content
-    width: 70%
-    float: right
+    width: 41.17647059%
+    float: left
+    position: relative
 
+    .title
+      margin-left: 1%
+      margin-right: 1%
+      margin-top: 10px
+      padding-left: 1%
+      font-size: $font-size-medium
+      color: $color-text-blue
+      font-weight: bold
+      border-bottom: 1px dashed $color-text-basic
+      line-height: 35px
+      height: 35px
+
+    .news-list
+      margin-left: 1%
+      margin-right: 1%
+      ul
+        li
+          font-size: $font-size-small
+          color: $color-text-basic
+          overflow: hidden
+          height: 25px
+          line-height: 25px
+          .title-content
+            float: left
+            padding-left: 5px
+          .title-date
+            float: right
+            padding-right: 5px
+          &.odd-dark
+            background-color: $color-background-light
+          &:hover
+            cursor: pointer  
+
+    .page-info
+      margin-left: 2%
+      margin-right: 1%
+      margin-top: 10px
+      margin-bottom: 10px
+      font-size: $font-size-small
+      color: $color-text-basic
+
+      span
+        margin-right: 5px
+        &.active-page
+          font-weight: bold
+        &.unactive
+          color: $color-text-unactive  
+      select
+        font-size: $font-size-small
+        color: $color-text-basic
+        &:hover
+          cursor: pointer
+        option
+          font-size: $font-size-small
+          color: $color-text-basic
+          &:hover
+            cursor: pointer  
 </style>

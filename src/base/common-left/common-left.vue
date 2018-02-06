@@ -14,10 +14,9 @@
   @import '~common/stylus/variable.styl'
 
   .common-left
-    width: 30%
+    width: 17.64705882%
     background: blue
     float:left
     height: 200px
-
 
 </style>

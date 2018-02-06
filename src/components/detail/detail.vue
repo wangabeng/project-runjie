@@ -1,7 +1,9 @@
 <template>
-  <div class='detail-wrapper clearfix'>
-    this is detail {{curItem}} and {{curIndex}} adn {{navShow}}
-  </div>
+  <transition name='detail-anim'>
+    <div class='detail-wrapper clearfix'>
+      this is detail {{curItem}} and {{curIndex}} adn {{navShow}}
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -32,7 +34,15 @@
   @import '~common/stylus/variable.styl'
 
   .detail-wrapper
-    width: 70%
+    width: 41.17647059%
     float: left
     background: red
+    position: relative
+    left: -41.17647059%
+
+    &.detail-anim-enter, &.detail-anim-leave-to
+      transform: translate3d(100%, 0, 0)
+    &.detail-anim-enter-active, &.detail-anim-leave-active
+      transition-duration: 0.3s
+      transition-timing-function: ease-in-out
 </style>

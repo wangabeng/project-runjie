@@ -1,17 +1,20 @@
 <template>
-  <div class='news-wrapper clearfix'>
-    <common-left></common-left>
-    <common-content 
-      v-if='pageCount' 
-      :queryTitle='queryTitle' 
-      :originCurPage='originCurPage'
-      :pageCount='pageCount'  
-      :subjectCount='newsCount' 
-      :subjectContent='news' 
-      @curPageChange='curPageChange'
-    ></common-content><!-- 给子元素传递requestTitle news -->
-    
-    <router-view/><!-- detail组件 -->
+  <div class='outer-news-wrapper'>
+    <div class='inner-news-wrapper clearfix'>
+      <common-left></common-left>
+      <common-content 
+        v-if='pageCount' 
+        :queryTitle='queryTitle' 
+        :queryTitleCn='queryTitleCn' 
+        :originCurPage='originCurPage'
+        :pageCount='pageCount'  
+        :subjectCount='newsCount' 
+        :subjectContent='news' 
+        @curPageChange='curPageChange'
+      ></common-content><!-- 给子元素传递requestTitle news -->
+      
+      <router-view/><!-- detail组件 -->
+    </div>
   </div>
 </template>
 
@@ -28,6 +31,7 @@
     data () {
       return {
         queryTitle: 'news',
+        queryTitleCn: '新闻',
         news:[],
         newsCount: 0,
         pageCount: null, // 由ajax请求获取 默认为空
@@ -79,7 +83,10 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '~common/stylus/variable.styl'
 
-  .news-wrapper
+  .outer-news-wrapper
     width: 100%
+    overflow: hidden
+  .inner-news-wrapper
+    width: 170%
 
 </style>
