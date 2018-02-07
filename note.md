@@ -467,7 +467,17 @@ props: {
   </script>
   </body>
   </html>
-# 
+
+# 用v-html渲染富文本文件遇到的坑
+  https://www.cnblogs.com/theone67/p/6898229.html
+  <父组件>
+    <div v-html='data'></div>
+  </子组件>
+
+  如果data内有p标签元素 在此组件中定义的元素样式在data标签元素内不生效 因为data内的标签元素相当于是父组件的子组件
+  父组件的style中加了scoped 意味着在父组件中定义的样式只在父组件中生效
+  解决办法：把父组件的scoped属性去掉即可
+
 #
 #
 #

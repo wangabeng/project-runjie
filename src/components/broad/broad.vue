@@ -162,6 +162,7 @@
             .bord-left
               float: none
               line-height: 50px
+              padding-right: 0
               height: 50px
               color: $color-text-white
               text-align: center

@@ -80,7 +80,7 @@
       padding: 30px 5%  90px 5%
       line-height: 30px
       color: $color-text-basic
-      font-size: $font-size-small
+      font-size: $font-size-medium
       background-color: $color-background-footer
       text-align:justify
 

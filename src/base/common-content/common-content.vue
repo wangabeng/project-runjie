@@ -1,11 +1,13 @@
 <template>
-  <div class='common-content' ref='commonContent'>
+  <div class='common-content' ref='commonContent'
+    :class='{"if-visiable":!showFlag}'
+  >
     <h3 class='title'>{{queryTitleCn}}</h3>
     <div class='news-list'>
       <ul>
         <li class='clearfix'
           v-for='(newsItem, index) in subjectContent' 
-          @click='_selectItem(newsItem,index)'
+          @click='_selectItem(newsItem,index,subjectContent)'
         >
             <span class='title-content'>{{newsItem.title}}</span>
             <span class='title-date'>{{newsItem.publicDate}}</span>
@@ -47,7 +49,8 @@
         curPage: 0,
         firstFlag: false,
         lastFlag: true,
-        moveFlag: false
+        moveFlag: false,
+        showFlag: true
       };
     },
     props: {
@@ -88,37 +91,32 @@
         // 如果已经是第一页 点击上一页显示灰色 并且点击的时候返回空
 
       },
-      _selectItem (item, index) {
+      _selectItem (item, index, contArr) {
         var _this = this;
-        console.log(item, index);
+        // console.log(item, index);
         this.$router.push({
           path: `/${this.queryTitle}/${item._id}`
         });
         // 然后把此item的写入vuex 子路由组件detail通过vuex读取
-        this.selectItem({item, index});
-
-        // 点击后设置此组件左移
-        /* this.moveFlag = true;
-        if (this.moveFlag) {
-          this.$refs.commonContent.style.visibility = 'hidden';
-        } else {
-          this.$refs.commonContent.style.visibility = 'visible';
-        } */
-
-        //实现列表页的隔行变色
-        // $('.news-list li:odd').addClass('odd-dark');
+        this.selectItem({item, index, contArr});
 
       }
     },
     created () {
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
-
     },
     updated () {
+      var _this = this;
       // 实现列表页的隔行变色
       // created mounted updated生命周期 created是vue对象创建后 mounted是虚拟dom挂载后 updated是data加载后
       $('.news-list li:odd').addClass('odd-dark');
+
+      // 监听路由组件detail.vue（并非父子关系）commen-content是否显示 true代表显示 false代表不显示
+      this.$root.eventBus.$on('ifVisiable', (flag) => {
+        _this.showFlag = flag;
+        // console.log('flag', _this.showFlag);
+      });
       
     },
     watch: {
@@ -149,6 +147,9 @@
     float: left
     position: relative
 
+    &.if-visiable
+      visibility: hidden
+
     .title
       margin-left: 1%
       margin-right: 1%
@@ -158,8 +159,8 @@
       color: $color-text-blue
       font-weight: bold
       border-bottom: 1px dashed $color-text-basic
-      line-height: 35px
-      height: 35px
+      line-height: 40px
+      height: 40px
 
     .news-list
       margin-left: 1%
@@ -169,8 +170,8 @@
           font-size: $font-size-small
           color: $color-text-basic
           overflow: hidden
-          height: 25px
-          line-height: 25px
+          height: 30px
+          line-height: 30px
           .title-content
             float: left
             padding-left: 5px

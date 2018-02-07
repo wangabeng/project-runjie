@@ -73,11 +73,11 @@
         line-height: 40px
       p
         text-align: center
-        width: 50%
+        width: 80%
         margin: 0 auto
         padding-top: 10px
         line-height: 30px
-        font-size: $font-size-small
+        font-size: $font-size-medium
       .p-bottmom
         padding-bottom: 20px
       .get-you

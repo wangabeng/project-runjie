@@ -64,6 +64,7 @@
           padding-top: 20px
           padding-bottom: 25px
           font-size: $font-size-medium
+          line-height: 25px
         input
           color: $color-text-green
           border: 1px solid $color-text-green

@@ -1,6 +1,6 @@
 <template>
-  <div class='outer-news-wrapper'>
-    <div class='inner-news-wrapper clearfix'>
+  <div class='outer-subject-wrapper' >
+    <div class='inner-subject-wrapper clearfix'>
       <common-left></common-left>
       <common-content 
         v-if='pageCount' 
@@ -11,7 +11,8 @@
         :subjectCount='newsCount' 
         :subjectContent='news' 
         @curPageChange='curPageChange'
-      ></common-content><!-- 给子元素传递requestTitle news -->
+        
+      ></common-content><!-- 给子元素传递requestTitle '如news' -->
       
       <router-view/><!-- detail组件 -->
     </div>
@@ -35,7 +36,7 @@
         news:[],
         newsCount: 0,
         pageCount: null, // 由ajax请求获取 默认为空
-        originCurPage: 1
+        originCurPage: 1,
       };
     },
     components: {
@@ -65,17 +66,18 @@
           // 获取到新闻列表 是个数组
           _this.newsCount = response.data;
           // 然后计算出总页数
-          _this.pageCount = Math.floor(_this.newsCount / PAGECAPACITY);
+          _this.pageCount = Math.ceil(_this.newsCount / PAGECAPACITY);
         }).catch(function (error) {
           console.log(error);
         });
       },
       curPageChange (curPage) {
-        console.log('父元素监听到:', curPage);
+        // console.log('父元素监听到:', curPage);
         // 监听到请求的数据curPage
         // 重新发送ajax请求当前的新闻数据 自动通过props传递给子元素
         this._getNews(curPage);
-      }
+      },
+
     }
   }
 </script>
@@ -83,10 +85,12 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import '~common/stylus/variable.styl'
 
-  .outer-news-wrapper
+  .outer-subject-wrapper
     width: 100%
     overflow: hidden
-  .inner-news-wrapper
+  .inner-subject-wrapper
     width: 170%
+
+
 
 </style>
