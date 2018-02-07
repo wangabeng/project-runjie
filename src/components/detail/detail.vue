@@ -12,16 +12,16 @@
         <div class='content-txt' v-html='contentTxt'></div>
         <div class='item-toggle'>
           <div>
-            <span @click='curIndex!=0 && toggleItem(curIndex-1)'>上一条：{{preTitle}}</span>
+            <span @click='curIndex!=0 && _toggleItem(curIndex-1)'>上一条：{{preTitle}}</span>
           </div>
           <div>
-            <span @click='curIndex!=(curPageArr.length-1) && toggleItem(curIndex+1)'>下一条：{{nextTitle}}</span>
+            <span @click='curIndex!=(curPageArr.length-1) && _toggleItem(curIndex+1)'>下一条：{{nextTitle}}</span>
           </div>
           <div>
-            <span>关闭此条</span>
+            <span @click='closeBack'>关闭此条</span>
           </div>
           <div>
-            <span>查看更多</span>
+            <span @click='closeBack'>查看更多</span>
           </div>
         </div>
       </div>
@@ -82,6 +82,9 @@
         var item = this.curPageArr[index];
         // var curPageArr = this.curPageArr;
         this.toggleItem({item, index});
+      },
+      closeBack () {
+        this.$router.back();
       }
     } 
   }

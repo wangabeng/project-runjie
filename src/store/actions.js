@@ -6,8 +6,8 @@ export const selectItem = ({commit, state}, {item, index, contArr}) => {
 
 export const toggleItem = ({commit, state}, {item, index}) => {
   console.log('be');
-  // commit('setCurItem', item);
-  // commit('setCurIndex', index);
+  commit('setCurItem', item);
+  commit('setCurIndex', index);
 }
 
 export const selectNav = ({commit, state}, {flag}) => {
