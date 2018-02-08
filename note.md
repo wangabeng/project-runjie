@@ -478,7 +478,12 @@ props: {
   父组件的style中加了scoped 意味着在父组件中定义的样式只在父组件中生效
   解决办法：把父组件的scoped属性去掉即可
 
-#
+# 同时满足具备2个classname才生效的写法
+  .classname1.classname2 {
+    color: red;
+    ------
+  }
+
 #
 #
 #

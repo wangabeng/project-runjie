@@ -12,10 +12,17 @@
         <div class='content-txt' v-html='contentTxt'></div>
         <div class='item-toggle'>
           <div>
-            <span @click='curIndex!=0 && _toggleItem(curIndex-1)'>上一条：{{preTitle}}</span>
+            <span 
+              @click='curIndex!=0 && _toggleItem(curIndex-1)'
+              :class='{"unactive":curIndex===0}'
+            >上一条：{{preTitle}}</span>
           </div>
           <div>
-            <span @click='curIndex!=(curPageArr.length-1) && _toggleItem(curIndex+1)'>下一条：{{nextTitle}}</span>
+            <span 
+              @click='curIndex!=(curPageArr.length-1) && _toggleItem(curIndex+1)'
+              :class='{"unactive":curIndex===curPageArr.length-1}'
+            >下一条：{{nextTitle}}
+            </span>
           </div>
           <div>
             <span @click='closeBack'>关闭此条</span>
@@ -38,9 +45,6 @@
 
   import {mapActions} from 'vuex'
   import {mapGetters} from 'vuex'
-
-  // 导入api
-  import {getNews, getNewsCount} from 'src/api/getnews.js'
 
   export default {
     created () {
@@ -126,12 +130,14 @@
           line-height: 1.5em
           padding-top: 10px
       .item-toggle
-        padding-top: 20px
-        padding-bottom: 20px
+        padding-top: 40px
+        padding-bottom: 30px
         div
-          padding-top: 5px
+          padding-top: 8px
           span
             font-size: $font-size-small
-            color: $color-text-black
+            color: $color-text-basic
+            &.unactive
+              color: $color-text-unactive
         
 </style>

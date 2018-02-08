@@ -1,10 +1,10 @@
 import {getData, getCount} from 'common/js/getdata.js';
 import {URLSEARCH, URLCOUNT, SERVICE} from 'src/api/config.js';
 
-export function getNews () {
-  return getData(URLSEARCH, SERVICE);
+export function getService (curPage, pageCapacity) {
+  return getData(URLSEARCH, SERVICE, curPage, pageCapacity);
 }
 
-export function getNewsCount () {
+export function getServiceCount () {
   return getCount(URLCOUNT, SERVICE);
 }

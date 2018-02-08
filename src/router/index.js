@@ -25,7 +25,13 @@ export default new Router({
     },
     {
       path: '/service',
-      component: Service
+      component: Service,
+      children: [
+        {
+          path:':title',
+          component: Detail
+        }
+      ]
     },
     {
       path: '/news',

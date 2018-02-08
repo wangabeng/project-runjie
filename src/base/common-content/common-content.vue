@@ -186,7 +186,7 @@
     .page-info
       margin-left: 2%
       margin-right: 1%
-      margin-top: 10px
+      margin-top: 30px
       margin-bottom: 10px
       font-size: $font-size-small
       color: $color-text-basic

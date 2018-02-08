@@ -102,11 +102,12 @@
       li
         float: left
         a
-          padding-right: 15px
+          padding-right: 10px
           font-size: $font-size-medium
           font-weight: bold
           color: $color-text-basic
-          &.router-link-exact-active
+          /* 同时具有这两个class名才生效的写法  */
+          &.router-link-active
             color: $color-text-blue
 
         a:hover
