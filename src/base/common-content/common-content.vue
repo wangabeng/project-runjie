@@ -50,7 +50,8 @@
         firstFlag: false,
         lastFlag: true,
         moveFlag: false,
-        showFlag: true
+        showFlag: true,
+        _queryTitle: {}
       };
     },
     props: {
@@ -103,8 +104,20 @@
       }
     },
     created () {
+      var _this =this;
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
+
+      this._queryTitle = {queryTitle:this.queryTitle};
+      // console.log(this._queryTitle);
+      
+      this.$root.eventBus.$on('changeSubject', (msg) => {
+        console.log('msg', msg);
+      });
+      console.log('created');
+    },
+    mounted () {
+
     },
     updated () {
       var _this = this;
@@ -115,13 +128,17 @@
       // 监听路由组件detail.vue（并非父子关系）commen-content是否显示 true代表显示 false代表不显示
       this.$root.eventBus.$on('ifVisiable', (flag) => {
         _this.showFlag = flag;
-        // console.log('flag', _this.showFlag);
       });
+
       
+
+      console.log('update');
+    },
+    destroyed () {
+      console.log('destroyed');
     },
     watch: {
       curPage (val) {
-
         val === 1? this.firstFlag = false: this.firstFlag = true;
         val === this.pageCount? this.lastFlag = false: this.lastFlag = true;
 
@@ -133,7 +150,6 @@
         } else {
           return;
         }
-        
       }
     }
   }

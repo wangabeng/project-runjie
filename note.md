@@ -484,7 +484,17 @@ props: {
     ------
   }
 
-#
+# js正则遇到的坑
+  [\b]内的字符不需要转意
+  var reg = /\w+[\b]/;
+  var path = '/news'
+  var sum = path.match(reg);
+  console.log(sum); // null
+
+  var reg = /\w+\b/;
+  var path = '/news'
+  var sum = path.match(reg);
+  console.log(sum); // ["news", index: 1, input: "/news"]
 #
 #
 #

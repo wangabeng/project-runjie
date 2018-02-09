@@ -6,7 +6,7 @@
       -->
       <ul class='nav-content'>
         <li class='clearfix'>
-          <router-link tag='a' to='/'>
+          <router-link tag='a' to='/index'>
             <i class="fa fa-home fa-1x"></i>&nbsp;&nbsp;首页
           </router-link>
         </li>

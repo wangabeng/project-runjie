@@ -17,6 +17,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/index'
+    },
+    {
+      path: '/index',
       component: Index
     },
     {
@@ -45,7 +49,13 @@ export default new Router({
     },
     {
       path: '/case',
-      component: Case
+      component: Case,
+      children: [
+        {
+          path:':title',
+          component: Detail
+        }
+      ]
     },
     {
       path: '/sample',

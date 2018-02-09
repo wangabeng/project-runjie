@@ -53,10 +53,14 @@
       this.$root.eventBus.$emit('ifVisiable', false);
     },
     destroyed () {
-      // 此时该组件销毁 此组件不显示
+      // 此时该组件销毁 让父组件可见
       // console.log('desctroyed1');
       // 路由组件销毁时让父组件可见
       this.$root.eventBus.$emit('ifVisiable', true);
+    },
+    updated () {
+      // 路由组件创建时让父组件不可见
+      this.$root.eventBus.$emit('ifVisiable', false);
     },
     computed: {
       ...mapGetters([
@@ -88,6 +92,7 @@
         this.toggleItem({item, index});
       },
       closeBack () {
+        console.log('this.$route', this.$router);
         this.$router.back();
       }
     } 
@@ -103,6 +108,7 @@
     position: relative
     left: -41.17647059%
     color: $color-text-black
+    -background: white
 
     &.detail-anim-enter, &.detail-anim-leave-to
       transform: translate3d(100%, 0, 0)
