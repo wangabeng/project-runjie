@@ -495,7 +495,9 @@ props: {
   var path = '/news'
   var sum = path.match(reg);
   console.log(sum); // ["news", index: 1, input: "/news"]
-#
+
+# eventBus遇到的坑
+https://segmentfault.com/q/1010000009710635
 #
 #
 #
