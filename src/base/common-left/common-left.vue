@@ -40,7 +40,8 @@
 
     },
     destroyed () {
-
+      var flag = false;
+      this.changeSubject({flag});
     },
     watch: {
       $route(){

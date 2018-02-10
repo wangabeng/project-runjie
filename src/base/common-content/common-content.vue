@@ -124,11 +124,16 @@
       });
 
       console.log('common content getters ', this.changeSubject);
+      setTimeout(() => {
+        console.log('common content getters 3000later ', this.changeSubject);
+      }, 300);
 
       console.log('common content created');
     },
     mounted () {
-
+      setTimeout(() => {
+        console.log('common content mounted getters 3000later ', this.changeSubject);
+      }, 3000);
     },
     updated () {
       var _this = this;
