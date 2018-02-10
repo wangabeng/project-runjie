@@ -28,7 +28,7 @@
             <span @click='closeBack'>关闭此条</span>
           </div>
           <div>
-            <span @click='closeBack'>查看更多</span>
+            <span @click='checkMore'>查看更多</span>
           </div>
         </div>
       </div>
@@ -42,13 +42,20 @@
   import CommonContent from 'src/base/common-content/common-content.vue'
   import {PAGECAPACITY} from 'src/api/config.js'
   import addP from 'src/common/js/addP.js'
+  import getRouterPath from 'src/common/js/getpath.js'
 
   import {mapActions} from 'vuex'
   import {mapGetters} from 'vuex'
 
   export default {
+    data () {
+      return {
+        curPath: ''
+      };
+    },
     created () {
-
+      this.curPath = getRouterPath(this.$route.path);
+      // console.log(this.curPath);
     },
     updated () {
       // 路由组件创建时让父组件不可见
@@ -92,6 +99,11 @@
       },
       closeBack () {
         this.$router.back();
+      },
+      checkMore () {
+        this.$router.push({
+          path: `/${this.curPath}`
+        });
       }
     } 
   }
@@ -104,10 +116,9 @@
     width: 41.17647059%
     float: left
     position: relative
-    -left: -41.17647059%
-    left: 0
+    left: -41.17647059%
     color: $color-text-black
-    -background: white
+    background: $color-background
 
     &.detail-anim-enter, &.detail-anim-leave-to
       transform: translate3d(100%, 0, 0)
@@ -116,7 +127,7 @@
       transition-timing-function: ease-in-out
 
     .content-wrapper
-      padding-left: 3%
+      padding-left: 4%
       padding-right: 3%
       padding-bottom: 60px
       h2

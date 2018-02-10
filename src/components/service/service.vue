@@ -87,7 +87,7 @@
 
   .outer-subject-wrapper
     width: 100%
-    -overflow: hidden
+    overflow: hidden
   .inner-subject-wrapper
     width: 170%
 

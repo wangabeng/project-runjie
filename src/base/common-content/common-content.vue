@@ -117,9 +117,7 @@
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
 
-
-
-      console.log(' commomn content created showFlag:', this.showFlag);
+      // console.log(' commomn content created showFlag:', this.showFlag);
     },
     mounted () {
 
@@ -130,7 +128,7 @@
       // created mounted updated生命周期 created是vue对象创建后 mounted是虚拟dom挂载后 updated是data加载后
       $('.news-list li:odd').addClass('odd-dark');
 
-      console.log('commomn content update');
+      // console.log('commomn content update');
     },
     destroyed () {
       // 销毁时候 设置隐藏

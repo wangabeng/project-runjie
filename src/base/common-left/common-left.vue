@@ -7,6 +7,7 @@
           v-for='(item, index) in serviceList'
           @click='_selectItem(item, index, serviceList)'
         >{{item.title}}</li>
+        <li>查看更多</li>
       </ul>
     </div>
     <div class='service'></div>
@@ -21,7 +22,7 @@
 
   // 定义查询当前页是第一页 每页容量为1000条
   const CURPAGE = 1
-  const PAGECAPACITY = 1000 // 如果不传 默认是在config中设置的PAGECAPACITY=6
+  const PAGECAPACITY = 12 // 如果不传 默认是在config中设置的PAGECAPACITY=6
 
   const SERVICE = 'service'
   const CASE = 'case'
@@ -84,15 +85,14 @@
         // 点击此条目后 路由变为 /service/5a6d7cbb84d166a57b200475
         // 如果前后一级路由不一致 先改变当前一级路由 
         if (beforePath!==SERVICE) {
-          console.log('不相等');
+          // console.log('不相等');
           // 改变vuex的 showFlag
           // true表示一级路由主题改变了 true的时候 common-content不显示
           // this.$root.eventBus.$emit('changeSubject', false); // 瞬间完成
 
-          this.toggleShowFlag({flag: false});
           setTimeout(() => {
             this.toggleShowFlag({flag: false});
-          },1);
+          },10);
         }
 
       }
@@ -110,7 +110,28 @@
 
   .common-left
     width: 17.64705882%
-    background: blue
+    background: $color-background-light
     float:left
+    .service
+      padding-left: 4%
+      padding-right: 4%
+      padding-top: 15px
+      margin: 0 0 0 0
+      h3
+        line-height: 36px
+        height: 36px
+        border-bottom: 1px dashed $color-text-basic
+        font-size: $font-size-medium
+        color: $color-text-blue
+        font-weight: bold
+      ul
+        li
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          line-height: 30px
+          height: 30px
+          font-size: $font-size-small
+          color: $color-text-black
 
 </style>
