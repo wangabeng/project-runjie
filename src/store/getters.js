@@ -4,4 +4,4 @@ export const curPageArr = state => state.curPageArr
 
 export const navShow = state => state.navShow
 
-export const changeSubject = state => state.changeSubject
+export const showFlag = state => state.showFlag

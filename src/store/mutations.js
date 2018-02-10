@@ -11,8 +11,8 @@ const mutations = {
   setNavShow (state, flag) {
     state.navShow = flag;
   },
-  setchangeSubject (state, flag) {
-    state.changeSubject = flag;
+  setShowFlag (state, flag) {
+    state.showFlag = flag;
   }
 }
 

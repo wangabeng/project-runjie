@@ -3,6 +3,6 @@ const state = {
   curIndex: null,
   curPageArr: null,
   navShow: true,
-  changeSubject: false
+  showFlag: false
 }
 export default state

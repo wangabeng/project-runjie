@@ -14,6 +14,6 @@ export const selectNav = ({commit, state}, {flag}) => {
   commit('setNavShow', flag);
 }
 
-export const changeSubject = ({commit, state}, {flag}) => {
-  commit('setchangeSubject', flag);
+export const toggleShowFlag = ({commit, state}, {flag}) => {
+  commit('setShowFlag', flag);
 }

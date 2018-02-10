@@ -51,7 +51,6 @@
         firstFlag: false,
         lastFlag: true,
         moveFlag: false,
-        showFlag: true,
         _queryTitle: {}
       };
     },
@@ -83,12 +82,13 @@
     },
     computed: {
       ...mapGetters([
-        'changeSubject'
+        'showFlag'
       ])
     },
     methods: {
       ...mapActions([
-        'selectItem'
+        'selectItem',
+        'toggleShowFlag'
       ]),
       selectPage (selected) {
         // 改变当前页 由watch监控当前页
@@ -114,26 +114,10 @@
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
 
-      this._queryTitle = {queryTitle:this.queryTitle};
-      // console.log(this._queryTitle);
-      
-      this.$root.eventBus.$on('changeSubject', (msg) => {
-        console.log('msg created', msg); // 这个是前一个commont-content组件接受的 因为数据请求延迟
-        // 首先监听到路由不同的信息 然后让其隐藏
-        // created阶段是不可以让其隐藏的 因为dom还没创建
-      });
-
-      console.log('common content getters ', this.changeSubject);
-      setTimeout(() => {
-        console.log('common content getters 3000later ', this.changeSubject);
-      }, 300);
-
-      console.log('common content created');
+      console.log(' commomn content created showFlag:', this.showFlag);
     },
     mounted () {
-      setTimeout(() => {
-        console.log('common content mounted getters 3000later ', this.changeSubject);
-      }, 3000);
+
     },
     updated () {
       var _this = this;
@@ -141,18 +125,12 @@
       // created mounted updated生命周期 created是vue对象创建后 mounted是虚拟dom挂载后 updated是data加载后
       $('.news-list li:odd').addClass('odd-dark');
 
-      // 监听路由组件detail.vue（并非父子关系）commen-content是否显示 true代表显示 false代表不显示
-      this.$root.eventBus.$on('ifVisiable', (flag) => {
-        _this.showFlag = flag;
-      });
 
       console.log('commomn content update');
     },
     destroyed () {
-      console.log('commomn destroyed');
-
-      this.$root.eventBus.$off('ifVisiable');
-      this.$root.eventBus.$off('changeSubject');
+      // 销毁时候 设置隐藏
+      this.toggleShowFlag({flag: false});
     },
     watch: {
       curPage (val) {

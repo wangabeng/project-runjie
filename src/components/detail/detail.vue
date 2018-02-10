@@ -48,22 +48,15 @@
 
   export default {
     created () {
-      // console.log('created');
-      // 路由组件创建时让父组件不可见
-      this.$root.eventBus.$emit('ifVisiable', false);
+
     },
     updated () {
       // 路由组件创建时让父组件不可见
-      this.$root.eventBus.$emit('ifVisiable', false);
+
     },
     destroyed () {
       // 此时该组件销毁 让父组件可见
-      // console.log('desctroyed1');
-      // 路由组件销毁时让父组件可见
-      this.$root.eventBus.$emit('ifVisiable', true);
-
-      // 关闭eventbus
-      this.$root.eventBus.$off('ifVisiable');
+      this.toggleShowFlag({flag: true});
     },
     computed: {
       ...mapGetters([
@@ -71,7 +64,7 @@
         'curIndex',
         'curPageArr',
         'navShow',
-        'changeSubject'
+        'showFlag'
       ]),
       contentTxt () {
         return addP(this.curItem.txt);
@@ -86,7 +79,8 @@
     },
     methods: {
       ...mapActions([
-        'toggleItem'
+        'toggleItem',
+        'toggleShowFlag'
       ]),
       _toggleItem (index) {
         // 切换当天item 改写vuex
@@ -110,7 +104,8 @@
     width: 41.17647059%
     float: left
     position: relative
-    left: -41.17647059%
+    -left: -41.17647059%
+    left: 0
     color: $color-text-black
     -background: white
 
