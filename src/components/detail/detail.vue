@@ -52,22 +52,26 @@
       // 路由组件创建时让父组件不可见
       this.$root.eventBus.$emit('ifVisiable', false);
     },
+    updated () {
+      // 路由组件创建时让父组件不可见
+      this.$root.eventBus.$emit('ifVisiable', false);
+    },
     destroyed () {
       // 此时该组件销毁 让父组件可见
       // console.log('desctroyed1');
       // 路由组件销毁时让父组件可见
       this.$root.eventBus.$emit('ifVisiable', true);
-    },
-    updated () {
-      // 路由组件创建时让父组件不可见
-      this.$root.eventBus.$emit('ifVisiable', false);
+
+      // 关闭eventbus
+      this.$root.eventBus.$off('ifVisiable');
     },
     computed: {
       ...mapGetters([
         'curItem',
         'curIndex',
         'curPageArr',
-        'navShow'
+        'navShow',
+        'changeSubject'
       ]),
       contentTxt () {
         return addP(this.curItem.txt);

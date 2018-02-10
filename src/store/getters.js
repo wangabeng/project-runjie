@@ -3,3 +3,5 @@ export const curIndex = state => state.curIndex
 export const curPageArr = state => state.curPageArr
 
 export const navShow = state => state.navShow
+
+export const changeSubject = state => state.changeSubject

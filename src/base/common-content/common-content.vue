@@ -41,6 +41,7 @@
   // 根据父元素传递过来的数据请求对应的数据 比如父元素传递过来news 就请求news的内容
 
   import {mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -80,6 +81,11 @@
         default: []
       }
     },
+    computed: {
+      ...mapGetters([
+        'changeSubject'
+      ])
+    },
     methods: {
       ...mapActions([
         'selectItem'
@@ -112,9 +118,14 @@
       // console.log(this._queryTitle);
       
       this.$root.eventBus.$on('changeSubject', (msg) => {
-        console.log('msg', msg);
+        console.log('msg created', msg); // 这个是前一个commont-content组件接受的 因为数据请求延迟
+        // 首先监听到路由不同的信息 然后让其隐藏
+        // created阶段是不可以让其隐藏的 因为dom还没创建
       });
-      console.log('created');
+
+      console.log('common content getters ', this.changeSubject);
+
+      console.log('common content created');
     },
     mounted () {
 
@@ -130,12 +141,13 @@
         _this.showFlag = flag;
       });
 
-      
-
-      console.log('update');
+      console.log('commomn content update');
     },
     destroyed () {
-      console.log('destroyed');
+      console.log('commomn destroyed');
+
+      this.$root.eventBus.$off('ifVisiable');
+      this.$root.eventBus.$off('changeSubject');
     },
     watch: {
       curPage (val) {

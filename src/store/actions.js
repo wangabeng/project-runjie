@@ -13,3 +13,7 @@ export const toggleItem = ({commit, state}, {item, index}) => {
 export const selectNav = ({commit, state}, {flag}) => {
   commit('setNavShow', flag);
 }
+
+export const changeSubject = ({commit, state}, {flag}) => {
+  commit('setchangeSubject', flag);
+}
