@@ -44,11 +44,10 @@
 
     },
     destroyed () {
+      this.$root.eventBus.$off('changeSubject');
     },
     watch: {
       $route(){
-        // console.log("测试路由改变");
-
       }
     },
     methods: {
@@ -84,12 +83,17 @@
         // 对比路由变化 比如 如果在news路由页面 /news
         // 点击此条目后 路由变为 /service/5a6d7cbb84d166a57b200475
         // 如果前后一级路由不一致 先改变当前一级路由 
-        // if (beforePath!==SERVICE) {
-          // console.log('不相等');
+        if (beforePath!==SERVICE) {
+          console.log('不相等');
           // 改变vuex的 showFlag
           // true表示一级路由主题改变了 true的时候 common-content不显示
-          
-        //}
+          // this.$root.eventBus.$emit('changeSubject', false); // 瞬间完成
+
+          this.toggleShowFlag({flag: false});
+          setTimeout(() => {
+            this.toggleShowFlag({flag: false});
+          },1);
+        }
 
       }
     },

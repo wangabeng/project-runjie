@@ -107,12 +107,17 @@
         // 然后把此item的写入vuex 子路由组件detail通过vuex读取
         this.selectItem({item, index, contArr});
 
+        // 点击时候 设置隐藏
+        this.toggleShowFlag({flag: false});
+
       }
     },
     created () {
       var _this =this;
       this.curPage = this.originCurPage;
       this.selected= this.originCurPage;
+
+
 
       console.log(' commomn content created showFlag:', this.showFlag);
     },
@@ -124,7 +129,6 @@
       // 实现列表页的隔行变色
       // created mounted updated生命周期 created是vue对象创建后 mounted是虚拟dom挂载后 updated是data加载后
       $('.news-list li:odd').addClass('odd-dark');
-
 
       console.log('commomn content update');
     },

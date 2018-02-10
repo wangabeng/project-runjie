@@ -55,6 +55,7 @@
 
     },
     destroyed () {
+      var _this = this;
       // 此时该组件销毁 让父组件可见
       this.toggleShowFlag({flag: true});
     },
@@ -90,7 +91,6 @@
         this.toggleItem({item, index});
       },
       closeBack () {
-        console.log('this.$route', this.$router);
         this.$router.back();
       }
     } 
