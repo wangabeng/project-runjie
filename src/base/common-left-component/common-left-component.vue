@@ -7,7 +7,7 @@
           v-for='(item, index) in subjectList'
           @click='_selectItem(item, index, subjectList)'
         >{{item.title}}</li>
-        <li>查看更多&nbsp;&nbsp;<i class="fa fa-chevron-right fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></li>
+        <li @click='lookMore'>查看更多&nbsp;&nbsp;<i class="fa fa-chevron-right fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></li>
       </ul>
     </div>
   </div>
@@ -114,7 +114,13 @@
             this.toggleShowFlag({flag: false});
           },10);
         }
-
+      },
+      // 查看更多
+      lookMore () {
+        var _this = this;
+        this.$router.push({
+          path: `/${_this.subject}`
+        });
       }
     },
     computed: {
@@ -136,9 +142,7 @@
   @import '~common/stylus/variable.styl'
 
   .common-left-component
-    -width: 17.64705882%
     background: $color-background-light
-    float:left
     .subject
       padding-left: 4%
       padding-right: 4%

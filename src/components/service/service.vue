@@ -88,8 +88,8 @@
   .outer-subject-wrapper
     width: 100%
     overflow: hidden
-  .inner-subject-wrapper
-    width: 170%
+    .inner-subject-wrapper
+      width: 170%
 
 
 
