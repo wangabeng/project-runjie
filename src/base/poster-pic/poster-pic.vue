@@ -20,7 +20,8 @@
     },
     methods: {
       getPosterSize () {
-        setTimeout(() => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
           this.posterHeight = Math.max(this.$refs.posterPic.clientHeight, this.$refs.text.clientHeight);
           // console.log(this.$refs.posterPic.clientHeight, this.$refs.text.clientHeight, this.posterHeight);
           this.$refs.mask.style.height = `${this.posterHeight}px`;
