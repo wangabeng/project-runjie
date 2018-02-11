@@ -1,5 +1,5 @@
 <template>
-  <div class='article-wrapper' v-if='contentData.length>0'>
+  <div class='article-wrapper' v-if='contentData.length>0 && subject==="aboutUs"'>
     <div class='content-wrapper'>
       <h2>{{contentData[0].corporationName}}</h2>
       <div class='content-txt' v-html='contTxt'></div>
@@ -38,7 +38,9 @@
     },
     watch: {
       contentData () {
-        this.contTxt = addP(this.contentData[0].aboutUs);
+        if (this.subject==="aboutUs") {
+          this.contTxt = addP(this.contentData[0].aboutUs);
+        }
       }
     }
   }
