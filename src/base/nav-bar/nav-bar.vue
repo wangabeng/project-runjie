@@ -1,6 +1,6 @@
 <template>
   <transition name='navBarAnim'>
-    <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='ifShow'>
+    <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='navShow' @click.stop='hideNav'>
       <!--
         响应布局 当屏幕宽度小于768px时 nav改为竖直排列
       -->
@@ -45,16 +45,28 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
+
   export default {
     data () {
       return {
-        ifShow: false
       };
     },
+    computed: {
+      ...mapGetters([
+        'navShow'
+      ])
+    },
+    methods: {
+      ...mapActions([
+        'showNav'
+      ]),
+      hideNav () {
+        this.showNav({flag: false});
+      }
+    },
     created () {
-      this.$root.eventBus.$on('showNav', (msg) => {
-        this.ifShow = msg;
-      });
     }
   }
 </script>

@@ -120,7 +120,6 @@
       // console.log(' commomn content created showFlag:', this.showFlag);
     },
     mounted () {
-
     },
     updated () {
       var _this = this;

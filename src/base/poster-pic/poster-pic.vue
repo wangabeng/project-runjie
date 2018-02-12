@@ -32,9 +32,9 @@
     mounted () {
       this.getPosterSize();
       let _this = this;
-      window.onresize = () => {
+      window.addEventListener('resize', () => {
         _this.getPosterSize();
-      };    
+      });
     }
   }
 </script>

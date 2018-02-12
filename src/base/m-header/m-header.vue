@@ -1,5 +1,5 @@
 <template>
-  <div class='header clearfix'>
+  <div class='header clearfix' ref='mHeader'>
     <div>
       <img class='logoare' src='./logo.png'/>
     </div>
@@ -43,22 +43,50 @@
         </li>
       </ul>
     </div>
-    <i class="fa fa-2x icon-bars" :class="{'fa-bars': !ifShow, 'fa-close': ifShow }" @click.stop='showNav'></i>
+    <i class="fa fa-2x icon-bars" :class="{'fa-bars': !navShow, 'fa-close': navShow }" @click.stop='_showNav'></i>
   </div>
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
+  
+  import {SCREENBOUNDARY} from 'src/api/config.js'
+
   export default {
     data () {
       return {
-        ifShow: false
       };
     },
+    computed: {
+      ...mapGetters([
+        'navShow'
+      ])
+    },
     methods: {
-      showNav () {
-        this.ifShow = !this.ifShow;
-        this.$root.eventBus.$emit('showNav', this.ifShow);
+      ...mapActions([
+        'showNav'
+      ]),
+      _showNav () {
+        var _this = this;
+        this.showNav({flag: !_this.navShow});
       }
+    },
+    mounted () {
+      // 这样写 window.onresize = 不同组件会相互覆盖 导致只有一个生效 正确的方法是增加监听
+      /*
+      window.onresize = () => {
+        console.log('header resize');
+      };
+      */
+      window.addEventListener('resize', () => {
+        var curTotalWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        // console.log('header resize', curTotalWidth);
+        // 如果点击开面包屑导航 然后窗口放到宽度大于768 此时navShow是true 就设置为false
+        if (curTotalWidth > 768 && this.navShow === true) {
+          this.showNav({flag: false})
+        }
+      });
     }
   }
 </script>

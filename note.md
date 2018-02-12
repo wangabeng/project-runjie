@@ -498,7 +498,9 @@ props: {
 
 # eventBus遇到的坑
 https://segmentfault.com/q/1010000009710635
-#
+  发送完emit事件后 在销毁阶段应该及时关闭
+
+# 这样写 window.onresize = 不同组件会相互覆盖 导致只有一个生效 正确的方法是增加监听
 #
 #
 #

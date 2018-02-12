@@ -15,4 +15,6 @@ export const ICONARR = {
   'case': 'fa-book',
   'sample': 'fa-university',
   'jobs': 'fa-handshake-o'
-}
+};
+
+export const SCREENBOUNDARY = 768;

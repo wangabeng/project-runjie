@@ -10,7 +10,7 @@ export const toggleItem = ({commit, state}, {item, index}) => {
   commit('setCurIndex', index);
 }
 
-export const selectNav = ({commit, state}, {flag}) => {
+export const showNav = ({commit, state}, {flag}) => {
   commit('setNavShow', flag);
 }
 
