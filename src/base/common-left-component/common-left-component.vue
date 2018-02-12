@@ -56,7 +56,7 @@
 
     },
     destroyed () {
-      this.$root.eventBus.$off('changeSubject');
+      // this.$root.eventBus.$off('changeSubject');
     },
     watch: {
       $route(){

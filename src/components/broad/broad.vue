@@ -8,10 +8,10 @@
           @mouseout='restartBroad'
         > <!-- 50% 浮动-->
           <h3 class='bord-left'>资讯</h3>
-          <h3 class='bord-center'> <!-- 50% 浮动-->
+          <h3 class='bord-center add-link' @click='_selectItem'> <!-- 50% 浮动-->
             {{newsTitle[currentIndex % newsTitle.length]}}
           </h3>
-          <input class='bord-right' type='button' value='了解更多'>
+          <input class='bord-right add-link' type='button' value='了解更多' @click='checkMore'>
         </div>
         <div 
           class='move-content clearfix'
@@ -20,10 +20,10 @@
 
         > <!-- 50% 浮动-->
           <h3 class='bord-left'>资讯</h3>
-          <h3 class='bord-center'> <!-- 50% 浮动-->
+          <h3 class='bord-center add-link' @click='_selectItem'> <!-- 50% 浮动-->
             {{newsTitle[(currentIndex + 1) % newsTitle.length]}}
           </h3>
-          <input class='bord-right' type='button' value='了解更多'>
+          <input class='bord-right add-link' type='button' value='了解更多' @click='checkMore'>
         </div>
       </div>
     </div>
@@ -37,6 +37,10 @@
   import Field from 'components/field/field.vue'
   import {mapActions} from 'vuex'
 
+  // 定义查询当前页是第一页 每页容量为1000条
+  const CURPAGE = 1
+  const PAGECAPACITY = 18 // 如果不传 默认是在config中设置的PAGECAPACITY=6
+
   export default {
     data () {
       return {
@@ -44,7 +48,8 @@
         currentIndex: 0,
         curWidth: '',
         index: 0,
-        timer: null
+        timer: null,
+        suject: 'news'
       };
     },
     computed: {
@@ -57,7 +62,7 @@
       }
     },
     created () {
-      this._getNews();
+      this._getNews(CURPAGE, PAGECAPACITY);
     },
     mounted () {
       this.autoBroadcast();
@@ -67,12 +72,13 @@
     },
     methods: {
       ...mapActions([
+        'toggleShowFlag',
         'selectItem'
       ]),
       // 发送ajax请求新闻内容
-      _getNews () {
+      _getNews (curPage, pageCapacity) {
         var _this = this;
-        getNews().then(function (response) {
+        getNews(curPage, pageCapacity).then(function (response) {
           // console.log(response);
           _this.allNews = response.data;
         }).catch(function (error) {
@@ -109,6 +115,26 @@
       restartBroad () {
         this.autoBroadcast();
         console.log('start');
+      },
+      _selectItem (){
+        var contArr = this.allNews;
+        var index = this.currentIndex;
+        var item = contArr[index];
+
+        this.$router.push({
+          path: `/news/${item._id}`
+        });
+        // 然后把此item的写入vuex 子路由组件detail通过vuex读取
+        this.selectItem({item, index, contArr});
+
+        // 点击时候 设置隐藏
+        this.toggleShowFlag({flag: false});
+      },
+      // 查看更多
+      checkMore () {
+        this.$router.push({
+          path: `/news`
+        });
       }
     }
   }
@@ -165,7 +191,7 @@
             line-height: 40px
             border-radius: 40px
   
-  @media (max-width: 768px)
+  @media (max-width: 920px)
     .broad-wrapper
       width: 100%
       height: auto

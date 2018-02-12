@@ -19,4 +19,4 @@ export const ICONARR = {
   'jobs': 'fa-handshake-o'
 };
 
-export const SCREENBOUNDARY = 768;
+export const SCREENBOUNDARY = 860;

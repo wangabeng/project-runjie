@@ -76,7 +76,7 @@
           border-radius: 30px
           font-size: $font-size-medium
   
-  @media (max-width: 768px)
+  @media (max-width: 920px)
     .field-wrapper
       padding-bottom: 20px
       h2

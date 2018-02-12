@@ -2,7 +2,7 @@
   <transition name='navBarAnim'>
     <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='navShow' @click.stop='hideNav'>
       <!--
-        响应布局 当屏幕宽度小于768px时 nav改为竖直排列
+        响应布局 当屏幕宽度小于920px时 nav改为竖直排列
       -->
       <ul class='nav-content'>
         <li class='clearfix'>

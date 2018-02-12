@@ -43,6 +43,11 @@
         </li>
       </ul>
     </div>
+    <div class='contact-us'><a href='#'>
+      <i class="fa fa-wechat fa-1x"></i>
+      联系我们
+    </a></div>
+
     <i class="fa fa-2x icon-bars" :class="{'fa-bars': !navShow, 'fa-close': navShow }" @click.stop='_showNav'></i>
   </div>
 </template>
@@ -83,7 +88,7 @@
         var curTotalWidth = document.documentElement.clientWidth || document.body.clientWidth;
         // console.log('header resize', curTotalWidth);
         // 如果点击开面包屑导航 然后窗口放到宽度大于768 此时navShow是true 就设置为false
-        if (curTotalWidth > 768 && this.navShow === true) {
+        if (curTotalWidth > SCREENBOUNDARY && this.navShow === true) {
           this.showNav({flag: false})
         }
       });
@@ -106,7 +111,7 @@
     .logoare
       height: 70px
       float:left
-      margin-left:4%
+      margin-left:2%
       margin-top:15px
 
     /* corpTitle公司名称h1 用于SEO优化 不显示 */  
@@ -123,8 +128,8 @@
       width: 60%
       float: left
       margin-top: 60px
-      margin-left: 3%
-      @media (max-width: 800px)
+      margin-left: 2%
+      @media (max-width: 920px)
         &
           display: none
       li
@@ -143,6 +148,21 @@
           color: $color-text-blue
           transform: scale(1.1)
 
+    .contact-us
+      position: absolute
+      right: 10px
+      top: 45px
+      a
+        color: $color-text-white
+        font-size: $font-size-medium
+        display: inline-block
+        background-color:$color-background-green
+        padding: 8px 12px
+        border-radius: 20px
+    .contact-us    
+      @media (max-width: 920px)
+        display: none  
+
     .icon-bars
 
       display: none
@@ -154,7 +174,7 @@
       border: 1px solid $color-text-blue
       border-radius: 5px
       font-size: 20px
-      @media (max-width: 800px)
+      @media (max-width: 920px)
         &
           display: block
     .icon-bars:hover
