@@ -501,7 +501,34 @@ https://segmentfault.com/q/1010000009710635
   发送完emit事件后 在销毁阶段应该及时关闭
 
 # 这样写 window.onresize = 不同组件会相互覆盖 导致只有一个生效 正确的方法是增加监听
-#
+
+# 一种图片自适应的布局方式
+  http://www.zhangxinxu.com/wordpress/2017/08/css-percent-padding-image-layout/
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .banner {
+        padding: 30% 0 0 0; <!-- 30%相对于父级的宽度 -->
+        position:relative;
+        height: 0;
+    }
+    .banner > img {
+        position: absolute;
+        width: 100%; height: 100%;
+        left:0;
+        top:0;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+    <img src="bd_logo1.png">
+  </div>
+  </body>
+  </html>
 #
 #
 #

@@ -5,8 +5,10 @@ export const CASE = 'case';
 export const CERTIFICATION = 'certification'; 
 export const NEWS = 'news'; 
 export const SERVICE = 'service';
+export const JOBS = 'jobs';
+export const SAMPLE = 'sample';
 
-export const PAGECAPACITY = 6;
+export const PAGECAPACITY = 7;
 
 export const ICONARR = {
   'aboutus': 'fa-globe',
