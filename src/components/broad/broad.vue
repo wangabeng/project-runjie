@@ -109,12 +109,12 @@
       // 鼠标移入 停止滚动
       stopBroad () {
         clearInterval(this.timer);
-        console.log('stop currentIndex', this.currentIndex);
+        // console.log('stop currentIndex', this.currentIndex);
       },
       // 鼠标移开 继续滚动
       restartBroad () {
         this.autoBroadcast();
-        console.log('start');
+        // console.log('start');
       },
       _selectItem (){
         var contArr = this.allNews;

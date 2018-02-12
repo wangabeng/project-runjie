@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-wrapper">
+  <div class="footer-wrapper" ref='mFooter'>
     <p>
       <span>© 2015-2018 襄阳润捷公司版权所有</span>
       <span class='split'>|</span>

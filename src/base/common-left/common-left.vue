@@ -1,7 +1,7 @@
 <template>
   <div class='common-left'>
-    <common-left-component :subject='service'></common-left-component>
-    <common-left-component :subject='cases' class='bottom'></common-left-component>
+    <common-left-component :subject='cases'></common-left-component>
+    <common-left-component :subject='service' class='bottom'></common-left-component>
   </div>
 </template>
 

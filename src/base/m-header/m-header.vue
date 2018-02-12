@@ -13,31 +13,31 @@
           </router-link>
         </li>
         <li class='clearfix'>
-          <router-link tag='a' to='/aboutus'>
+          <router-link tag='a' to='/aboutus' @click.native='routeAnimate'>
             <i class="fa fa-globe fa-1x"></i>&nbsp;&nbsp;关于润捷
           </router-link>
         </li>
         <li class='clearfix'>
-          <router-link tag='a' to='/service'><i class="fa fa-list fa-1x">
-            </i>&nbsp;&nbsp;服务项目
+          <router-link tag='a' to='/service' @click.native='routeAnimate'>
+            <i class="fa fa-list fa-1x"></i>&nbsp;&nbsp;服务项目
           </router-link>
         </li>
         <li class='clearfix'>
-          <router-link tag='a' to='/news'>
-            <i class="fa fa-newspaper-o fa-1x"></i>&nbsp;&nbsp;新闻
+          <router-link tag='a' to='/news' @click.native='routeAnimate'>
+            <i class="fa fa-newspaper-o fa-1x" ></i>&nbsp;&nbsp;新闻
           </router-link>
         </li>
         <li class='clearfix'>
-          <router-link tag='a' to='/case'>
+          <router-link tag='a' to='/case' @click.native='routeAnimate'>
             <i class="fa fa-book fa-1x"></i>&nbsp;&nbsp;成功案例
           </router-link>
         </li>
         <li class='clearfix'>
-          <router-link tag='a' to='/sample'>
+          <router-link tag='a' to='/sample' @click.native='routeAnimate'>
             <i class="fa fa-university fa-1x"></i>&nbsp;&nbsp;证书样本
           </router-link></li>
         <li class='clearfix'>
-          <router-link tag='a' to='/jobs'>
+          <router-link tag='a' to='/jobs' @click.native='routeAnimate'>
             <i class="fa fa-handshake-o fa-1x"></i>&nbsp;&nbsp;招聘
           </router-link>
         </li>
@@ -75,6 +75,14 @@
       _showNav () {
         var _this = this;
         this.showNav({flag: !_this.navShow});
+      },
+      routeAnimate () {
+        var scrollHeight = $('.poster-pic-wrapper').height();
+        var curScrollTop = console.log($("html, body").scrollTop());
+        // if (scrollHeight !==curScrollTop) {
+          $("html, body").animate({ scrollTop: scrollHeight-2}, 200);
+        // }
+        return false;
       }
     },
     mounted () {
