@@ -2,14 +2,23 @@
   <div class='broad-wrapper'>
     <div class='title-wrapper ' ref='titleWrapper'> <!-- 100%  不显示滚动条-->
       <div class='move-wrapper clearfix' ref='moveWrapper'> <!-- 200% 相对定位  -->
-        <div class='move-content clearfix'> <!-- 50% 浮动-->
-          <h3 class='bord-left'>认证资讯</h3>
+        <div 
+          class='move-content clearfix' 
+          @mouseover='stopBroad'
+          @mouseout='restartBroad'
+        > <!-- 50% 浮动-->
+          <h3 class='bord-left'>资讯</h3>
           <h3 class='bord-center'> <!-- 50% 浮动-->
             {{newsTitle[currentIndex % newsTitle.length]}}
           </h3>
           <input class='bord-right' type='button' value='了解更多'>
         </div>
-        <div class='move-content clearfix'> <!-- 50% 浮动-->
+        <div 
+          class='move-content clearfix'
+          @mouseover='stopBroad'
+          @mouseout='restartBroad'
+
+        > <!-- 50% 浮动-->
           <h3 class='bord-left'>资讯</h3>
           <h3 class='bord-center'> <!-- 50% 浮动-->
             {{newsTitle[(currentIndex + 1) % newsTitle.length]}}
@@ -26,6 +35,7 @@
   import {getNews} from 'src/api/getnews.js'
 
   import Field from 'components/field/field.vue'
+  import {mapActions} from 'vuex'
 
   export default {
     data () {
@@ -33,7 +43,8 @@
         allNews: [],
         currentIndex: 0,
         curWidth: '',
-        index: 0
+        index: 0,
+        timer: null
       };
     },
     computed: {
@@ -55,6 +66,9 @@
       clearInterval(this.timer);
     },
     methods: {
+      ...mapActions([
+        'selectItem'
+      ]),
       // 发送ajax请求新闻内容
       _getNews () {
         var _this = this;
@@ -85,6 +99,16 @@
       // 实时计算显示区宽度
       getWidth () {
         this.curWidth = '-' + this.$refs.titleWrapper.clientWidth + 'px';
+      },
+      // 鼠标移入 停止滚动
+      stopBroad () {
+        clearInterval(this.timer);
+        console.log('stop currentIndex', this.currentIndex);
+      },
+      // 鼠标移开 继续滚动
+      restartBroad () {
+        this.autoBroadcast();
+        console.log('start');
       }
     }
   }
