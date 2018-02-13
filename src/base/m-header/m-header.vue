@@ -8,7 +8,7 @@
     <div class='nav-bar'>
       <ul class='nav-content clearfix'>
         <li class='clearfix'>
-          <router-link tag='a' to='/index'>
+          <router-link tag='a' to='/index' @click.native='routeAnimateIndex'>
             <i class="fa fa-home fa-1x"></i>&nbsp;&nbsp;首页
           </router-link>
         </li>
@@ -43,10 +43,12 @@
         </li>
       </ul>
     </div>
-    <div class='contact-us'><a href='#'>
-      <i class="fa fa-wechat fa-1x"></i>
-      联系我们
-    </a></div>
+    <div class='contact-us'>
+      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=285457718&site=qq&menu=yes">
+        <i class="fa fa-qq fa-1x"></i>
+        <span>联系我们</span>
+      </a>
+    </div>
 
     <i class="fa fa-2x icon-bars" :class="{'fa-bars': !navShow, 'fa-close': navShow }" @click.stop='_showNav'></i>
   </div>
@@ -77,19 +79,20 @@
         this.showNav({flag: !_this.navShow});
       },
       routeAnimate () {
-        var scrollHeight = $('.poster-pic-wrapper').height();
-        var curScrollTop = console.log($("html, body").scrollTop());
-        // if (scrollHeight !==curScrollTop) {
-          $("html, body").animate({ scrollTop: scrollHeight-2}, 200);
-        // }
+        var scrollHeight = $('.poster-outer-wrapper').innerHeight();
+        // console.log(scrollHeight);
+        var curScrollTop = $("html, body").scrollTop();
+        $("html, body").animate({ scrollTop: scrollHeight - 2}, 200);
         return false;
+      },
+      routeAnimateIndex () {
+        $("html, body").animate({ scrollTop: 0}, 200);
       }
     },
     mounted () {
       // 这样写 window.onresize = 不同组件会相互覆盖 导致只有一个生效 正确的方法是增加监听
       /*
       window.onresize = () => {
-        console.log('header resize');
       };
       */
       window.addEventListener('resize', () => {
@@ -167,6 +170,8 @@
         background-color:$color-background-green
         padding: 8px 12px
         border-radius: 20px
+        span
+          padding-left: 3px
     .contact-us    
       @media (max-width: 920px)
         display: none  

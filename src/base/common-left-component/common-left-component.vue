@@ -1,13 +1,14 @@
 <template>
   <div class='common-left-component' v-if='subjectList'>
     <div class='subject'>
-      <h3>{{subjectCNname}}</h3>
+      <h3 class='add-link' @click='lookMore'>{{subjectCNname}}</h3>
       <ul>
         <li
           v-for='(item, index) in subjectList'
           @click='_selectItem(item, index, subjectList)'
+          class='add-link'
         >{{item.title}}</li>
-        <li @click='lookMore'>查看更多&nbsp;&nbsp;<i class="fa fa-chevron-right fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></li>
+        <li class='add-link' @click='lookMore'>查看更多&nbsp;&nbsp;<i class="fa fa-chevron-right fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></li>
       </ul>
     </div>
   </div>

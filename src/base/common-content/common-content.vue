@@ -2,10 +2,10 @@
   <div class='common-content' ref='commonContent'
     :class='{"if-visiable":!showFlag}'
   >
-    <h3 class='title'>{{queryTitleCn}}</h3>
+    <h3 class='title add-link'>{{queryTitleCn}}</h3>
     <div class='news-list'>
       <ul>
-        <li class='clearfix'
+        <li class='clearfix add-link'
           v-for='(newsItem, index) in subjectContent' 
           @click='_selectItem(newsItem,index,subjectContent)'
         >

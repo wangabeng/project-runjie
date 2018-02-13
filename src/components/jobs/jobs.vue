@@ -29,11 +29,6 @@
     },
     // test
     mounted () {
-      // $.scrollTo('.outer-subject-wrapper',500);
-      
-       window.addEventListener('scroll',() => {
-      });
-
     }, 
     methods: {
       _getJobs () {

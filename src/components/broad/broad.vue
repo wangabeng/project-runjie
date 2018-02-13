@@ -149,6 +149,7 @@
     height: 50px
     padding: 19px 0
     background-color: $color-background-blue
+    margin-top:1px
 
     .title-wrapper
       width: 100%
