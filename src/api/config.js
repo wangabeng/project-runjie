@@ -1,5 +1,5 @@
-export const URLSEARCH = 'http://localhost:3000/find';
-export const URLCOUNT = 'http://localhost:3000/getcount';
+export const URLSEARCH = '127.0.0.1:3009/find';
+export const URLCOUNT = '127.0.0.1:3009/getcount';
 export const ABOUTUS = 'aboutus'; 
 export const CASE = 'case'; 
 export const CERTIFICATION = 'certification'; 
@@ -19,4 +19,4 @@ export const ICONARR = {
   'jobs': 'fa-handshake-o'
 };
 
-export const SCREENBOUNDARY = 860;
+export const SCREENBOUNDARY = 920;
