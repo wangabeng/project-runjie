@@ -93,7 +93,7 @@
 
         // 路由跳转
         this.$router.push({
-          path: `/${_this.subject}/${item._id}`
+          path: `/${_this.subject}/${item.title}`
         });
         
         // 改写vuex的数据 改写当前页 当前数据数组 当前index ajax请求 异步

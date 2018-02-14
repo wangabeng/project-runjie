@@ -102,7 +102,7 @@
         var _this = this;
         // console.log(item, index);
         this.$router.push({
-          path: `/${this.queryTitle}/${item._id}`
+          path: `/${this.queryTitle}/${item.title}`
         });
         // 然后把此item的写入vuex 子路由组件detail通过vuex读取
         this.selectItem({item, index, contArr});

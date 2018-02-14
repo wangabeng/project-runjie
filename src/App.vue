@@ -16,6 +16,9 @@ import PosterPic from 'base/poster-pic/poster-pic.vue'
 import MFooter from 'base/m-footer/m-footer.vue'
 import ContactQq from 'base/contact-qq/contact-qq.vue'
 
+import updatePageView from 'src/api/updatepageview.js'
+import getPath from 'common/js/getpath.js'
+
 export default {
   name: 'App',
   components: {
@@ -24,6 +27,21 @@ export default {
     PosterPic,
     MFooter,
     ContactQq
+  },
+  watch: {
+    $route(){
+      console.log(this.$route.params.title, getPath(this.$route.path));
+      var subject = getPath(this.$route.path);
+      var title = this.$route.params.title;
+      console.log('subject, title', subject, title);
+      if (title) {
+        updatePageView(subject, title).then(function (response) {
+          // console.log('response:', response);
+        }).catch(function (error) {
+          console.log(error);
+        });      
+      }
+    }
   }
 }
 </script>

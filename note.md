@@ -529,8 +529,25 @@ https://segmentfault.com/q/1010000009710635
   </div>
   </body>
   </html>
-#
-#
+
+# 增加打开页面的时候 在后台设置session
+  思路： 打开详情页的时候 发送ajax请求
+  具体为:
+  1 打开详情页 附带title参数
+  2 服务器收到请求设置一个随机产生的userid
+  req.session.userId= 随机产生的userid
+  req.session.userId+Titile = userId+Titile
+  并返把userID返回给前端
+  3 数据库里浏览器加1
+  4 前台重复打开一个标题的文章
+  5 后台查询是否有这个sessionId 如果有 就不设置新的ID随机数
+  如果没有 就设置ID随机数
+  然后查询req.session.userId+Titile是否为空
+  如果为空 就设置req.session.userId+Titile=req.session.userId+Titile
+  如果不为空 就不设置
+
+# axios 跨域无法setcookie的解决方法
+    withCredentials: true
 #
 #
 #

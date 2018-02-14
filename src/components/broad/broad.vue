@@ -122,7 +122,7 @@
         var item = contArr[index];
 
         this.$router.push({
-          path: `/news/${item._id}`
+          path: `/news/${item.title}`
         });
         // 然后把此item的写入vuex 子路由组件detail通过vuex读取
         this.selectItem({item, index, contArr});
@@ -149,7 +149,6 @@
     height: 50px
     padding: 19px 0
     background-color: $color-background-blue
-    margin-top:1px
 
     .title-wrapper
       width: 100%

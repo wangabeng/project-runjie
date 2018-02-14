@@ -1,5 +1,13 @@
-export const URLSEARCH = '127.0.0.1:3009/find';
-export const URLCOUNT = '127.0.0.1:3009/getcount';
+// prod
+/*export const URLSEARCH = 'http://runjieapi.benkid.cn/find';
+export const URLCOUNT = 'http://runjieapi.benkid.cn/getcount';*/
+
+// dev
+export const URLSEARCH = 'http://localhost:3009/find';
+export const URLCOUNT = 'http://localhost:3009/getcount';
+
+export const URLGETTITLE = 'http://localhost:3009/gettitle';
+
 export const ABOUTUS = 'aboutus'; 
 export const CASE = 'case'; 
 export const CERTIFICATION = 'certification'; 
