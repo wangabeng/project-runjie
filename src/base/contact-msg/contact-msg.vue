@@ -4,6 +4,7 @@
     <!--  -->
     <contact-msg-comp :contactSubject='contactQq'></contact-msg-comp>
     <div class='close add-link' ref='close' @click='closeContact' title='联系我们'>
+      <i class="fa fa-close fa-1x"></i>
       <i>关闭</i>
     </div>
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import addP from 'common/js/addP.js';
 import {PAGECAPACITY} from 'src/api/config.js';
+import {SORT} from 'src/api/config.js';
 
 // 获取新闻页等内容
 // url = 'http://localhost:3002/find'
@@ -17,7 +18,8 @@ export function getData (url, subject, curPage, pageCapacity) {
       params: {
         contentName: subject,
         curPage: curPage,
-        pageCapacity: pageCapacity
+        pageCapacity: pageCapacity,
+        sort: SORT
       }        
     }).then(function (response) {
       resolve(response);

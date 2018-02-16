@@ -1,12 +1,13 @@
 // prod
-/*export const URLSEARCH = 'http://runjieapi.benkid.cn/find';
-export const URLCOUNT = 'http://runjieapi.benkid.cn/getcount';*/
+export const URLSEARCH = 'http://runjieapi.benkid.cn/find';
+export const URLGETTITLE = 'http://runjieapi.benkid.cn/gettitle';
+export const URLCOUNT = 'http://runjieapi.benkid.cn/getcount';
 
 // dev
-export const URLSEARCH = 'http://localhost:3009/find';
+/*export const URLSEARCH = 'http://localhost:3009/find';
 export const URLCOUNT = 'http://localhost:3009/getcount';
 
-export const URLGETTITLE = 'http://localhost:3009/gettitle';
+export const URLGETTITLE = 'http://localhost:3009/gettitle';*/
 
 export const ABOUTUS = 'aboutus'; 
 export const CASE = 'case'; 
@@ -16,7 +17,8 @@ export const SERVICE = 'service';
 export const JOBS = 'jobs';
 export const SAMPLE = 'sample';
 
-export const PAGECAPACITY = 7;
+export const PAGECAPACITY = 9;
+export const SORT = 'id';
 
 export const ICONARR = {
   'aboutus': 'fa-globe',
