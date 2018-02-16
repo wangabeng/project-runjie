@@ -3,10 +3,10 @@
     <broad></broad>
     <field></field>
     <div class='aboutus-wrapper'>
-      <div>
+      <div class='pic-wrapper'>
         <img src='./aboutus_white.png'>
-        <!--<h3>About Us</h3>
-        <h4><i class='fa fa-arrow-circle-down fa-1x'></i>关于润捷</h4>-->
+        <h3>About Us</h3>
+        <h4><i class='fa fa-arrow-circle-down fa-1x'></i>关于润捷</h4>
       </div>
 
       <p>
@@ -55,24 +55,29 @@
   
   .aboutus-wrapper
     width: 100%
-    div
+    div.pic-wrapper
       position: relative
       color: $color-text-white
+      width: 100%
+      height: 0
+      padding-top: 20.4%
       img
         width: 100%
+        height: 100%
         border: none
-        display: block
-
+        position: absolute
+        left: 0
+        top: 0
       h3
         position: absolute
         left: 60%
         top: 55%
-        font-size: 2em
+        font-size: $font-size-large-x
       h4
         position: absolute
         left: 60%
         top: 80%
-        font-size: 1em
+        font-size: $font-size-medium
         i
           padding-right: 1em
     p

@@ -8,7 +8,7 @@
           @click='_selectItem(item, index, subjectList)'
           class='add-link'
         >{{item.title}}</li>
-        <li class='add-link' @click='lookMore'>查看更多&nbsp;&nbsp;<i class="fa fa-chevron-right fa-1x"></i><i class="fa fa-chevron-right fa-1x"></i></li>
+        <li class='add-link' @click='lookMore'>查看更多&nbsp;&nbsp;>></li>
       </ul>
     </div>
   </div>
@@ -163,10 +163,7 @@
           text-overflow: ellipsis
           line-height: 30px
           height: 30px
-          font-size: $font-size-small
+          font-size: $font-size-medium
           color: $color-text-black
-          i
-            margin-left: -3px
-            font-weight: normal
 
 </style>

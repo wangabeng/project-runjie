@@ -17,6 +17,13 @@ Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 
+// 图片懒加载
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad, {
+  loading: require('common/img/loading.png'),
+  attempt: 1
+})
+
 /* eslint-disable no-new */
 new Vue({
   data: {

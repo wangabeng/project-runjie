@@ -3,14 +3,14 @@
     <div class='poster-inner-wrapper clearfix'><!-- 宽度200% overflow: hidden -->
       
       <div class='poster-pic-wrapper' ref='posterPicWrapper'>
-        <img class='poster-pic' ref='posterPic' src='./business-blur.jpg'/><!--浮动-->
+        <img class='poster-pic' ref='posterPic' v-lazy='picUrl'/><!--浮动-->
       </div>
 
       <div class='text' ref='text'><!--浮动-->
         <h2>专业的一体化认证体系解决方案提供商</h2>
         <p>襄阳润捷企业管理有限公司是国内领先的体系认证咨询、企业管理咨询、企业管理培训、验厂认证咨询及产品认证咨询机构</p>
         <p class='p-bottmom'>致力于为企业、 政府及非盈利组织提供体系认证、企业发展战略制定、组织变革、 运营改善到文化管理、品牌提升、品质方法实训、品质效率改进等多项专业服务。</p>
-        <div class='get-you'><a href='#/service'>获取属于您的体系认证解决方案</a></div>
+        <div class='get-you'><a href='#/service' @click='scrollToTop'>获取属于您的体系认证解决方案</a></div>
       </div>
 
       <div class='mask' ref='mask'></div><!-- 绝对定位 -->
@@ -23,13 +23,20 @@
   export default {
     data () {
       return {
-        posterHeight: ''
+        posterHeight: '',
+        picUrl: require('./business-blur.jpg')
       };
     },
     methods: {
-      getPosterSize () {
+      scrollToTop () {
+        clearTimeout(timer);
+        var timer = setTimeout(() => {
+          var scrollHeight = $('.poster-outer-wrapper').innerHeight();
+          $("html, body").animate({ scrollTop: scrollHeight - 2}, 400);
+          return false;        
+        }, 50);
 
-      }
+      },
     },
     mounted () {
     }

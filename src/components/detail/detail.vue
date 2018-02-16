@@ -15,20 +15,22 @@
             <span 
               @click='curIndex!=0 && _toggleItem(curIndex-1)'
               :class='{"unactive":curIndex===0}'
+              class='add-link'
             >上一条：{{preTitle}}</span>
           </div>
           <div>
             <span 
               @click='curIndex!=(curPageArr.length-1) && _toggleItem(curIndex+1)'
               :class='{"unactive":curIndex===curPageArr.length-1}'
+              class='add-link'
             >下一条：{{nextTitle}}
             </span>
           </div>
           <div>
-            <span @click='closeBack'>关闭此条</span>
+            <span @click='closeBack' class='add-link'>关闭此条</span>
           </div>
           <div>
-            <span @click='checkMore'>查看更多</span>
+            <span @click='checkMore' class='add-link'>查看更多</span>
           </div>
         </div>
       </div>
@@ -128,7 +130,7 @@
 
     .content-wrapper
       padding-left: 4%
-      padding-right: 3%
+      padding-right: 52px
       padding-bottom: 60px
       h2
         font-size: $font-size-large-x

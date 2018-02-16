@@ -43,11 +43,8 @@
         </li>
       </ul>
     </div>
-    <div class='contact-us'>
-      <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=285457718&site=qq&menu=yes">
-        <i class="fa fa-qq fa-1x"></i>
-        <span>联系我们</span>
-      </a>
+    <div class='contact-us' @click='contactRoute'>
+      <span>联系我们</span>
     </div>
 
     <i class="fa fa-2x icon-bars" :class="{'fa-bars': !navShow, 'fa-close': navShow }" @click.stop='_showNav'></i>
@@ -79,14 +76,30 @@
         this.showNav({flag: !_this.navShow});
       },
       routeAnimate () {
-        var scrollHeight = $('.poster-outer-wrapper').innerHeight();
-        // console.log(scrollHeight);
-        var curScrollTop = $("html, body").scrollTop();
-        $("html, body").animate({ scrollTop: scrollHeight - 2}, 200);
-        return false;
+        // clearTimeout(timer);
+        // var timer = setTimeout(() => {
+        this.$nextTick(() => {
+          var scrollHeight = $('.poster-outer-wrapper').innerHeight();
+          $("html, body").animate({ scrollTop: scrollHeight - 2}, 400);
+          return false;        
+        });
+
       },
       routeAnimateIndex () {
-        $("html, body").animate({ scrollTop: 0}, 200);
+        this.$nextTick(() => {
+          $("html, body").animate({ scrollTop: 0}, 200);
+        });
+      },
+      contactRoute () {
+        var _this = this;
+        this.$router.push({
+          path: '/aboutus'
+        });
+        this.$nextTick(() => {
+          var scrollHeight = $('.poster-outer-wrapper').innerHeight();
+          $("html, body").animate({ scrollTop: scrollHeight - 2}, 400);
+          return false;        
+        });
       }
     },
     mounted () {
@@ -163,15 +176,15 @@
       position: absolute
       right: 10px
       top: 45px
-      a
+      color: $color-text-white
+      font-size: $font-size-medium
+      display: inline-block
+      background-color:$color-background-green
+      padding: 8px 12px
+      border-radius: 20px
+      span
+        padding-left: 3px
         color: $color-text-white
-        font-size: $font-size-medium
-        display: inline-block
-        background-color:$color-background-green
-        padding: 8px 12px
-        border-radius: 20px
-        span
-          padding-left: 3px
     .contact-us    
       @media (max-width: 920px)
         display: none  

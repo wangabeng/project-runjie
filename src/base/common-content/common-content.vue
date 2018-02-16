@@ -179,7 +179,7 @@
       margin-right: 1%
       ul
         li
-          font-size: $font-size-small
+          font-size: $font-size-medium
           color: $color-text-basic
           overflow: hidden
           height: 30px
@@ -200,7 +200,7 @@
       margin-right: 1%
       margin-top: 30px
       margin-bottom: 10px
-      font-size: $font-size-small
+      font-size: $font-size-medium
       color: $color-text-basic
 
       span
@@ -210,12 +210,12 @@
         &.unactive
           color: $color-text-unactive  
       select
-        font-size: $font-size-small
+        font-size: $font-size-medium
         color: $color-text-basic
         &:hover
           cursor: pointer
         option
-          font-size: $font-size-small
+          font-size: $font-size-medium
           color: $color-text-basic
           &:hover
             cursor: pointer  

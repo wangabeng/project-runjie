@@ -87,7 +87,7 @@
 
     .content-wrapper
       padding-left: 4%
-      padding-right: 3%
+      padding-right: 52px
       padding-bottom: 60px
       h2
         font-size: $font-size-large-x

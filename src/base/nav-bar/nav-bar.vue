@@ -66,14 +66,19 @@
         this.showNav({flag: false});
       },
       routeAnimate () {
-        var scrollHeight = $('.poster-outer-wrapper').innerHeight();
-        // console.log(scrollHeight);
-        var curScrollTop = $("html, body").scrollTop();
-        $("html, body").animate({ scrollTop: scrollHeight - 2}, 200);
-        return false;
+        // clearTimeout(timer);
+        // var timer = setTimeout(() => {
+        this.$nextTick(() => {
+          var scrollHeight = $('.poster-outer-wrapper').innerHeight();
+          $("html, body").animate({ scrollTop: scrollHeight - 2}, 400);
+          return false;        
+        });
+
       },
       routeAnimateIndex () {
-        $("html, body").animate({ scrollTop: 0}, 200);
+        this.$nextTick(() => {
+          $("html, body").animate({ scrollTop: 0}, 200);
+        });
       }
     },
     created () {
