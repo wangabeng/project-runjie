@@ -1,6 +1,6 @@
 <template>
   <div class='contact-msg-wrapper' @mouseleave.stop='mouseOut' ref='contactMsgWrapper'>
-    <div class='main-wrapper' @mouseenter.stop='mouseIn' ref='mainWrapper'>
+    <div class='main-wrapper' @mouseenter.stop='mouseIn' ref='mainWrapper' @click.stop='mouseClick'>
       <div class='main' ref='main'>
         <i class="fa fa-1x" :class='{"fa-phone": "fa-phone"===contactSubject.icon,"fa-qq": "fa-qq"===contactSubject.icon}'></i>
         <span>{{contactSubject.bottomTxt}}</span>
@@ -27,6 +27,11 @@
         default: {}
       }
     },
+    data () {
+      return {
+        leftShowFlag: 'false'
+      };
+    },
     methods: {
       mouseIn () {
         var _this = this;
@@ -34,7 +39,9 @@
         clearTimeout(this.timerOut);
         this.timerIn = setTimeout(() => {
           $(_this.$refs.main).animate({top: '-51px'}, 300);
-          $(this.$refs.leftDetail).animate({left: '-151px'}, 300);        
+          $(this.$refs.leftDetail).animate({left: '-151px'}, 300, function () {
+            _this.leftShowFlag = true;
+          });        
         }, 50);
       },
       mouseOut () {
@@ -43,8 +50,20 @@
         clearTimeout(this.timerIn);
         this.timerOut = setTimeout(() => {
           $(_this.$refs.main).animate({top: '0'}, 300);
-          $(this.$refs.leftDetail).animate({left: '0'}, 300);
+          $(this.$refs.leftDetail).animate({left: '0'}, 300, function () {
+            _this.leftShowFlag = false;
+          });
         }, 50);
+      },
+      // 解决移动端点击 然后让左侧内容右移 PC端体验更加优化
+      mouseClick () {
+        var _this = this;
+        if (this.leftShowFlag === true) {
+          $(_this.$refs.main).animate({top: '0'}, 300);
+          $(this.$refs.leftDetail).animate({left: '0'}, 300, function () {
+            _this.leftShowFlag = false;
+          });
+        }
       }
     }
 

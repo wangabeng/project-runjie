@@ -175,21 +175,28 @@
       height: 40px
 
     .news-list
-      margin-left: 1%
-      margin-right: 1%
+      margin-left: 0%
+      margin-right: 0%
       ul
         li
           font-size: $font-size-medium
           color: $color-text-basic
           overflow: hidden
-          height: 30px
-          line-height: 30px
+          height: 35px
+          line-height: 35px
+          margin-left: 2%
+          margin-right: 52px
+          min
           .title-content
             float: left
-            padding-left: 5px
+            width: 70%
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
           .title-date
             float: right
-            padding-right: 5px
+            width: 30%
+            text-align: center
           &.odd-dark
             background-color: $color-background-light
           &:hover
@@ -202,6 +209,7 @@
       margin-bottom: 10px
       font-size: $font-size-medium
       color: $color-text-basic
+      line-height: 30px
 
       span
         margin-right: 5px

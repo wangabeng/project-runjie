@@ -1,13 +1,12 @@
 // prod
-export const URLSEARCH = 'http://runjieapi.benkid.cn/find';
+/*export const URLSEARCH = 'http://runjieapi.benkid.cn/find';
 export const URLGETTITLE = 'http://runjieapi.benkid.cn/gettitle';
-export const URLCOUNT = 'http://runjieapi.benkid.cn/getcount';
+export const URLCOUNT = 'http://runjieapi.benkid.cn/getcount';*/
 
 // dev
-/*export const URLSEARCH = 'http://localhost:3009/find';
+export const URLSEARCH = 'http://localhost:3009/find';
 export const URLCOUNT = 'http://localhost:3009/getcount';
-
-export const URLGETTITLE = 'http://localhost:3009/gettitle';*/
+export const URLGETTITLE = 'http://localhost:3009/gettitle';
 
 export const ABOUTUS = 'aboutus'; 
 export const CASE = 'case'; 
