@@ -61,7 +61,7 @@ Mongodb数据库开启了db.auth授权登录
 
 另外，前端需要在发送axios的时候把是否设置cookie参数打开，node才能有效操作session。
 
-#关于Nginx设置:
+# 关于Nginx设置:
 vue打包生成的静态文件，node服务及数据库服务均部署在阿里云服务器上。
 runjie.benkid.cn地址映射到vue打包的静态文件夹，
 runjie.benkid.cn/api 映射到node服务，监听node服务的3009端口。
