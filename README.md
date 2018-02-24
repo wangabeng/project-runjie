@@ -24,6 +24,6 @@ runjie.benkid.cn
 小屏状态打开导航时，右上角图片自动切换为可关闭图标，且鼠标在导航上时，禁止页面滚动操作。
 
 大屏幕尺寸（以920px为临界点）
-!('http://p4ntfmilp.bkt.clouddn.com/%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%B1%95%E7%A4%BA.png')
+!('https://github.com/wangabeng/picture/blob/master/runjie/%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%B1%95%E7%A4%BA.png?raw=true')
 
 
