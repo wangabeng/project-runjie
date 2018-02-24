@@ -27,4 +27,8 @@ runjie.benkid.cn
 
 ![image](http://p4ntfmilp.bkt.clouddn.com/%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%B1%95%E7%A4%BA.png)
 
+![小屏幕导航未展开](http://p4ntfmilp.bkt.clouddn.com/%E5%B0%8F%E5%B1%8F%E5%B9%95%E5%B1%95%E7%A4%BA.png)
+
+
+
 
