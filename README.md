@@ -1,21 +1,10 @@
-# runjie
+## 润捷企业管理公司网站
+## 技术栈： 
+前端框架vue
+路由 vue-router 
+状态管理 vuex 
+ajax请求工具 axios 
 
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+后端服务 Nodejs 
+数据库 Mongodb
+服务器代理 Nginx
