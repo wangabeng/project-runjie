@@ -107,8 +107,16 @@
       /*
       window.onresize = () => {
       };
-      */
+      
       window.addEventListener('resize', () => {
+        var curTotalWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        // console.log('header resize', curTotalWidth);
+        // 如果点击开面包屑导航 然后窗口放到宽度大于768 此时navShow是true 就设置为false
+        if (curTotalWidth > SCREENBOUNDARY && this.navShow === true) {
+          this.showNav({flag: false})
+        }
+      });*/
+      $(window).resize(function() {
         var curTotalWidth = document.documentElement.clientWidth || document.body.clientWidth;
         // console.log('header resize', curTotalWidth);
         // 如果点击开面包屑导航 然后窗口放到宽度大于768 此时navShow是true 就设置为false

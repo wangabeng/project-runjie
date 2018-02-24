@@ -1,6 +1,6 @@
 <template>
   <transition name='navBarAnim'>
-    <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='navShow' @click.stop='hideNav'>
+    <div class='nav-bar-wrapper' ref='navBarWrapper' v-if='navShow' @click.stop.prevent='hideNav' @mouseenter='preventScroll($event)'>
       <!--
         响应布局 当屏幕宽度小于920px时 nav改为竖直排列
       -->
@@ -79,9 +79,17 @@
         this.$nextTick(() => {
           $("html, body").animate({ scrollTop: 0}, 200);
         });
+      },
+      // 阻止页面滚动
+      preventScroll (ev) {
+        $(ev.target).on('mousewheel',function(e){
+          var e = event || e;
+          e.preventDefault();
+          return false;
+        })
       }
     },
-    created () {
+    mounted () {
     }
   }
 </script>

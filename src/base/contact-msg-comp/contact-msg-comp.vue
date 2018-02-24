@@ -63,6 +63,11 @@
           $(this.$refs.leftDetail).animate({left: '0'}, 300, function () {
             _this.leftShowFlag = false;
           });
+        } else {
+          $(_this.$refs.main).animate({top: '-51px'}, 300);
+          $(this.$refs.leftDetail).animate({left: '-151px'}, 300, function () {
+            _this.leftShowFlag = true;
+          });
         }
       }
     }

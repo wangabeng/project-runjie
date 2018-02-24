@@ -548,10 +548,96 @@ https://segmentfault.com/q/1010000009710635
 
 # axios 跨域无法setcookie的解决方法
     withCredentials: true
-#
-#
-#
-#
+    
+# vue项目中浏览器图标的设置
+  根目录下有一个index.html，这个就相当于我们普通项目中的各个html页面文件，所以设置方法就是在index.html的head标签中添加link标签。
+  这里要注意的是图标文件的位置，不能放到src里，这样的路径会让浏览器找不到。网页把根域名作为相对路径的根目录了，然而我们文件的路径是相对于项目文件的根目录的，因此就找不到了。
+
+  因此，图片一类的静态文件，应该放在这个static文件夹下，这个文件夹下的文件（夹）会按照原本的结构放在网站根目录下。这时我们再去使用/static绝对路径，这样就可以访问这些静态文件了。所以推荐将项目中的静态文件放到static文件夹下。
+
+  将favicon.ico的图标文件放到static文件夹内，在index.html的head中添加：
+
+  <link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico">
+
+# nginx解决跨域请求的问题
+  xxx.conf文件设置如下：
+  test2.benkid.cn 是主站访问路径 // 服务器端是4000端口监听
+  test2.benkid.cn/api 是api路径 // 服务器端是3000端口监听
+
+  upstream test2 {
+      server 127.0.0.1:4000;
+  }
+
+  upstream api {
+      server 127.0.0.1:3000;
+  }
+
+
+  server {
+      listen       80;
+      server_name  test2.benkid.cn;
+
+      location / {
+          proxy_pass http://test2;
+          proxy_set_header Host $host;
+          proxy_set_header X-Nginx-proxy true;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_redirect off;
+      }
+
+    location /api {
+        proxy_pass http://api;
+        proxy_set_header Host $host;
+        proxy_set_header X-Nginx-proxy true;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect off;
+    }
+
+  }
+
+# 此项目的服务器端nginx配置
+upstream runjieapi {
+    server 127.0.0.1:3009;
+}
+
+server {
+    listen       80;
+    server_name   runjieapi.benkid.cn;
+
+    location / {
+        proxy_pass http://runjieapi;
+        proxy_set_header Host $host;
+        proxy_set_header X-Nginx-proxy true;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect off;
+    }
+}
+
+
+# 此项目通过代理
+server {
+    listen       80;
+    server_name   runjie.benkid.cn;
+
+    location / {
+      root /data/www/project-runjie-prod;
+      index index.html index.htm;
+    }
+
+    location /api {
+      proxy_pass http://127.0.0.1:3009/api;
+      proxy_set_header Host $host;
+      proxy_set_header X-Nginx-proxy true;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_redirect off;
+    }
+
+}
+
 #
 #
 #
