@@ -8,9 +8,9 @@ export const URLGETTITLE = '/api/gettitle';
 export const URLCOUNT = '/api/getcount';
 
 // dev
-/*export const URLSEARCH = 'http://localhost:3009/api/find';
-export const URLCOUNT = 'http://localhost:3009/api/getcount';
-export const URLGETTITLE = 'http://localhost:3009/api/gettitle';*/
+// export const URLSEARCH = 'http://localhost:3009/api/find';
+// export const URLCOUNT = 'http://localhost:3009/api/getcount';
+// export const URLGETTITLE = 'http://localhost:3009/api/gettitle';
 
 export const ABOUTUS = 'aboutus'; 
 export const CASE = 'case'; 

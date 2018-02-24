@@ -3,7 +3,7 @@
     <div class='poster-inner-wrapper clearfix'><!-- 宽度200% overflow: hidden -->
       
       <div class='poster-pic-wrapper' ref='posterPicWrapper'>
-        <img class='poster-pic' ref='posterPic' v-lazy='picUrl'/><!--浮动-->
+        <img class='poster-pic' ref='posterPic' :src='picUrl'/><!--浮动-->
       </div>
 
       <div class='text' ref='text'><!--浮动-->
